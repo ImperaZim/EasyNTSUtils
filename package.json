@@ -1,0 +1,25 @@
+{
+  "name": "easyntsutils",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx ./src/index.ts",
+    "start": "node ./build/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.6.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "colorette": "^2.0.20"
+  },
+  "imports": {
+    "#console": [
+      "./build/ConsoleUtils/index.js"
+    ]
+  }
+}

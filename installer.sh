@@ -5,9 +5,12 @@ cd ./src/utils/
 
 sudo apt-get install jq
 
-git clone "https://github.com/ImperaZim/EasyNTSUtils.git"
-mv ./src/ ./ 
+git clone "https://github.com/ImperaZim/EasyNTSUtils.git" 
+cd EasyNTSUtils
+mv ./src/ ../ 
 
+cd ../ 
+rm -rf EasyNTSUtils
 cd ../../
 
 if [ -f "./tsconfig.json" ]; then

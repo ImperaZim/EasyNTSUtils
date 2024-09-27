@@ -1,7 +1,5 @@
 {
-
 	"compilerOptions": {
-
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
@@ -18,9 +16,12 @@
 		"moduleResolution": "NodeNext",
 		"outDir": "./build",
 		"rootDir": "./src",
-		"baseUrl": "./src",
+		"baseUrl": "./",
 		"paths": {
-			"#console": ["./ConsoleUtils/index.ts"]
+			"#utils": ["./src/index.ts"],
+			"#console": ["./src/ConsoleUtils/index.ts"],
+			"#json": ["./src/JsonUtils/index.ts"],
+			"#embed": ["./src/EmbedUtils/index.ts"]
 		}
 	},
 	"include": ["src"],

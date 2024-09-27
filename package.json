@@ -1,12 +1,10 @@
 {
   "name": "easyntsutils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "main": "build/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx ./src/index.ts",
-    "start": "node ./build/index.js"
+    "start": "tsx src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.6.1",
@@ -14,12 +12,18 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "colorette": "^2.0.20"
+    "colorette": "^2.0.20",
+    "discord.js": "^14.16.2"
   },
-  "imports": {
-    "#console": [
-      "./build/ConsoleUtils/index.js"
-    ]
-  }
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImperaZim/EasyNTSUtils.git"
+  },
+  "author": "ImperaZim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImperaZim/EasyNTSUtils/issues"
+  },
+  "homepage": "https://github.com/ImperaZim/EasyNTSUtils#readme"
 }

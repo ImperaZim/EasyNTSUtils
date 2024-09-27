@@ -1,3 +1,3 @@
-export * from "./Color.js";
-export * from "./Logger.js";
-export * from "./LoggerTypes.js";
+export * from "./Color";
+export * from "./Logger";
+export * from "./LoggerTypes";

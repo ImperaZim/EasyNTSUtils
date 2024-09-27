@@ -7,7 +7,7 @@ sudo apt-get install jq
 
 git clone "https://github.com/ImperaZim/EasyNTSUtils.git" 
 cd EasyNTSUtils
-mv ./src/ ../ 
+mv ./src/* ../
 
 cd ../ 
 rm -rf EasyNTSUtils

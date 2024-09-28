@@ -14,9 +14,37 @@ cd ../
 rm -rf EasyNTSUtils
 cd ../../
 
-if [ -f "./tsconfig.json" ]; then
-jq '.compilerOptions += { "baseUrl": "./" } | .compilerOptions.paths //= {} | .compilerOptions.paths += { "#utils": ["./src/utils/index.ts"], "#console": ["./src/utils/ConsoleUtils/index.ts"], "#json": ["./src/utils/JsonUtils/index.ts"], "#mysql": ["./src/MySQLUtils/index.ts"], "#embed": ["./src/utils/EmbedUtils/index.ts"] }' tsconfig.json > tmp.json && mv tmp.json tsconfig.json
-fi 
+cat << 'EOF' > updateTsConfig.js
+const fs = require('fs');
+
+const filePath = './tsconfig.json';
+
+if (fs.existsSync(filePath)) {
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+  // Adiciona baseUrl
+  data.compilerOptions = {
+    ...data.compilerOptions,
+    baseUrl: './',
+    paths: {
+      ...data.compilerOptions.paths,
+      '#utils': ['./src/utils/index.ts'],
+      '#console': ['./src/utils/ConsoleUtils/index.ts'],
+      '#json': ['./src/utils/JsonUtils/index.ts'],
+      '#mysql': ['./src/MySQLUtils/index.ts'],
+      '#embed': ['./src/utils/EmbedUtils/index.ts'],
+    },
+  };
+
+  // Escreve o arquivo de volta
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  console.log("EasyNTSUtils Instalado!");
+}
+EOF
+
+node updateTsConfig.js
+
+rm updateTsConfig.js
 
 rm -rf ./installer.sh 
 

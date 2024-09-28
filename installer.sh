@@ -35,10 +35,6 @@ if (fs.existsSync(filePath)) {
       '#embed': ['./src/utils/EmbedUtils/index.ts'],
     },
   };
-
-  // Escreve o arquivo de volta
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-  console.log("EasyNTSUtils Instalado!");
 }
 EOF
 

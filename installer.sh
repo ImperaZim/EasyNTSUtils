@@ -20,3 +20,5 @@ jq '.compilerOptions += { "baseUrl": "./" } | .compilerOptions.paths //= {} | .c
 fi 
 
 rm -rf ./installer.sh 
+
+echo "EasyNTSUtils Instalado!";

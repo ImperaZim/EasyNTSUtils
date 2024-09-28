@@ -1,9 +1,0 @@
-# Folders
-/build
-/dist
-/discloud
-/deprecated
-/node_modules
-
-# Files
-/package-lock.json

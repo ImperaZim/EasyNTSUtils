@@ -1,3 +1,5 @@
+sudo apt-get install jq
+
 mkdir -p ./src/
 mkdir -p ./src/utils/
 
@@ -12,8 +14,6 @@ mv ./src/* ../
 cd ../ 
 rm -rf EasyNTSUtils
 cd ../../
-
-sudo apt-get install jq
 
 if [ -f "./tsconfig.json" ]; then
 jq '.compilerOptions += { "baseUrl": "./" } | .compilerOptions.paths //= {} | .compilerOptions.paths += { "#utils": ["./src/utils/index.ts"], "#console": ["./src/utils/ConsoleUtils/index.ts"], "#json": ["./src/utils/JsonUtils/index.ts"], "#mysql": ["./src/MySQLUtils/index.ts"], "#embed": ["./src/utils/EmbedUtils/index.ts"] }' tsconfig.json > tmp.json && mv tmp.json tsconfig.json

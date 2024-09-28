@@ -1,4 +1,4 @@
-sudo apt install jq
+apt install jq
 
 mkdir -p ./src/
 mkdir -p ./src/utils/

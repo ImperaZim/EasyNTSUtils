@@ -21,6 +21,7 @@
 			"#utils": ["./src/index.ts"],
 			"#console": ["./src/ConsoleUtils/index.ts"],
 			"#json": ["./src/JsonUtils/index.ts"],
+			"#mysql": ["./src/MySQLUtils/index.ts"],
 			"#embed": ["./src/EmbedUtils/index.ts"]
 		}
 	},

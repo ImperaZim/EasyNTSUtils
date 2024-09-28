@@ -6,6 +6,9 @@ export * from "./ConsoleUtils/LoggerTypes";
 // #tson
 export * from "./JsonUtils/JsonFile";
 
+// #mysql
+export * from "./MySQLUtils/MySQL";
+
 // #embed
 export * from "./EmbedUtils/EmbedManager";
 export * from "./EmbedUtils/EmbedRegistry";

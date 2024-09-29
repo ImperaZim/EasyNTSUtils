@@ -4,7 +4,6 @@ import {
   ButtonBuilder,
   ActionRowBuilder,
   SelectMenuBuilder,
-  ModalBuilder,
   TextInputBuilder,
 } from "discord.js";
 import { get } from "./EmbedRegistry";
@@ -70,7 +69,7 @@ function createEmbed(embedData: any, tags: Tags): EmbedBuilder[] {
 }
 
 /**
- * Creates an ActionRow containing different component types (buttons, selects, modals).
+ * Creates an ActionRow containing different component types (buttons, selects).
  * @param componentsData The data for the components.
  * @param tags A record of tags for translation.
  * @returns An ActionRow containing components.
@@ -119,30 +118,6 @@ function createActionRowFromComponents(
 }
 
 /**
- * Creates a modal component with text inputs.
- * @param modalData The data for the modal.
- * @param tags A record of tags for translation.
- * @returns A ModalBuilder object containing text inputs.
- */
-function createModal(modalData: any, tags: Tags): ModalBuilder {
-  const modal = new ModalBuilder().setCustomId(transmorph(modalData.customid, tags));
-  if (modalData.title) modal.setTitle(transmorph(modalData.title, tags));
-
-  if (modalData.components) {
-    const textInputs = modalData.components.map((input: any) => {
-      const textInput = new TextInputBuilder()
-        .setCustomId(transmorph(input.customid, tags))
-        .setLabel(transmorph(input.label, tags))
-        .setStyle(input.style);
-      return textInput;
-    });
-    modal.addComponents(textInputs);
-  }
-
-  return modal;
-}
-
-/**
  * Retrieves a reply based on the name and tags provided, with optional custom data.
  * @param name The name of the reply.
  * @param tags A record of tags for translation.
@@ -152,21 +127,18 @@ function createModal(modalData: any, tags: Tags): ModalBuilder {
 export function getReply(name: string, tags: Tags, custom: any = null) {
   let embed: EmbedBuilder[] = [];
   let components = undefined;
-  let modal = undefined;
 
   const builderData = get(name);
   if (builderData) {
     if (builderData.embeds) embed = createEmbed(builderData.embeds, tags);
     if (builderData.components) components = [createActionRowFromComponents(builderData.components, tags)];
-    if (builderData.modal) modal = createModal(builderData.modal, tags);
   } else if (custom) {
     if (custom.embeds) embed = createEmbed(custom.embeds, tags);
     if (custom.components) components = [createActionRowFromComponents(custom.components, tags)];
-    if (custom.modal) modal = createModal(custom.modal, tags);
   }
 
   components = (components || []).map((ar) => ar.toJSON());
-  return { embed, components, modal };
+  return { embed, components };
 }
 
 /**

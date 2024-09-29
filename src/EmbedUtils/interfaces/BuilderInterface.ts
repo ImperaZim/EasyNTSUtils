@@ -1,4 +1,4 @@
-import { ButtonBuilder, ButtonStyle, SelectMenuBuilder, ModalBuilder, TextInputBuilder } from "discord.js";
+import { ButtonBuilder, ButtonStyle, SelectMenuBuilder, TextInputBuilder } from "discord.js";
 
 /**
  * Represents a field within an embed.
@@ -53,25 +53,9 @@ export interface SelectComponent extends SelectMenuBuilder {
 }
 
 /**
- * Represents a text input within a modal component.
- * This uses TextInputBuilder from discord.js.
- */
-export interface TextInputComponent extends TextInputBuilder {
-  customId: string;
-}
-
-/**
- * Extends ModalBuilder to define a modal component.
- */
-export interface ModalComponent extends ModalBuilder {
-  customId: string;
-  components: TextInputComponent[]; // A modal contains text inputs.
-}
-
-/**
  * Union type representing all possible component types.
  */
-export type Component = ButtonComponent | SelectComponent | ModalComponent;
+export type Component = ButtonComponent | SelectComponent;
 
 /**
  * Represents an action row with embeds and components.

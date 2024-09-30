@@ -26,37 +26,23 @@ export class SelectMenuCollector {
     timeout: number
   ) {
     if (response) {
-      const collector: InteractionCollector<
-        | StringSelectMenuInteraction
-        | UserSelectMenuInteraction
-        | RoleSelectMenuInteraction
-        | ChannelSelectMenuInteraction
-        | MentionableSelectMenuInteraction
-      > = response.createMessageComponentCollector({
+      const collector = response.createMessageComponentCollector({
         time: timeout,
-        componentType: [
-          ComponentType.StringSelect,
-          ComponentType.UserSelect,
-          ComponentType.RoleSelect,
-          ComponentType.ChannelSelect,
-        ],
-        filter: (
-          interaction:
-            | StringSelectMenuInteraction
-            | UserSelectMenuInteraction
-            | RoleSelectMenuInteraction
-            | ChannelSelectMenuInteraction
-        ) => {
-          return interaction.isStringSelectMenu() ||
+        componentType: ComponentType.StringSelect | ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect,
+        filter: (interaction) => {
+          // Verifica se a interação é do tipo correto
+          return (
+            interaction.isStringSelectMenu() ||
             interaction.isUserSelectMenu() ||
             interaction.isRoleSelectMenu() ||
-            interaction.isChannelSelectMenu();
+            interaction.isChannelSelectMenu() ||
+            interaction.isMentionableSelectMenu() // Incluindo o MentionableSelect
+          );
         },
       });
 
-      if (collector) {
-        collector.on("collect", callback);
-      }
+      // Adiciona o callback ao evento 'collect'
+      collector.on("collect", callback);
     }
   }
 }

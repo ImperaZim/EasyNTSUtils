@@ -8,7 +8,6 @@ mv EasyNTSUtils/src/* @imperazim/
 
 rm -rf EasyNTSUtils
 
-if [ -f tsconfig.json ]; then 
 cat << 'EOF' > updateTsConfig.js
 const fs = require('fs');
 
@@ -41,15 +40,15 @@ if (fs.existsSync(filePath)) {
       "DiscordModalComponent": ["DiscordElementor/modal/component"]
     }
   };
+  console.log('Arquivo tsconfig atualizado!');
+}else{
+  console.log('Arquivo tsconfig não encontrado!');
 }
 EOF
 
 node updateTsConfig.js
 
-rm updateTsConfig.js 
-echo 'Arquivo tsconfig atualizado!';
-else
-echo 'Arquivo tsconfig não encontrado!';
+rm updateTsConfig.js
 fi;
 
 npm i colorette

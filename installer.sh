@@ -51,7 +51,7 @@ node updateTsConfig.js
 rm updateTsConfig.js
 fi;
 
-npm i colorette
+npm i colorette --silent
 
 rm -rf ./installer.sh 
 

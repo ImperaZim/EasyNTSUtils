@@ -26,7 +26,7 @@ if (fs.existsSync(filePath)) {
   // Atualiza o tsconfig.json com as novas opções
   data.compilerOptions = {
     ...data.compilerOptions,
-    "baseUrl": "./src/",
+    "baseUrl": "./@imperazim/",
     "paths": {
       "Utils": ["./"],
       "Console": ["./ConsoleUtils"],

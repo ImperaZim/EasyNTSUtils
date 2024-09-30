@@ -1,4 +1,4 @@
-rm rf ./ENTSU/
+rm -rf ./ENTSU/
 mkdir -p ./ENTSU/
 
 cd ./ENTSU/

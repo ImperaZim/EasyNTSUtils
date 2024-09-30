@@ -47,6 +47,7 @@ EOF
 node updateTsConfig.js
 
 rm updateTsConfig.js 
+echo 'Arquivo tsconfig atualizado!';
 else
 echo 'Arquivo tsconfig não encontrado!';
 fi;

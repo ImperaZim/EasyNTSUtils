@@ -14,7 +14,7 @@ export class ModalCollector {
     callback: (interaction: ModalSubmitInteraction) => void
   ) {
     if (response && response.awaitModalSubmit) {
-      const collector: InteractionCollector<ModalSubmitInteraction> = response.awaitModalSubmit({
+      const collector: Promise<ModalSubmitInteraction<CacheType>> = response.awaitModalSubmit({
         time: timeout,
         filter: (interaction: ModalSubmitInteraction) => interaction.isModalSubmit(),
       });

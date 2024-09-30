@@ -1,5 +1,6 @@
 import { Embeds, Components } from "../";
 import { EmbedBuilder, ActionRowBuilder } from "discord.js";
+import { APIActionRowComponent, APIButtonComponent, APISelectComponent } from 'discord-api-types/v10'; // Certifique-se de que a versão está correta
 
 /**
  * Interface para uma única linha que contém embeds e componentes.
@@ -7,17 +8,18 @@ import { EmbedBuilder, ActionRowBuilder } from "discord.js";
 export interface Row {
   /** Um objeto que contém embeds. */
   embeds?: Embeds;
-  /** Um objeto que contém componentes. */
-  components?: Components;
+  /** Um objeto que contém componentes, agora ajustado para o tipo correto. */
+  components?: readonly (APIActionRowComponent<APIButtonComponent> | APIActionRowComponent<APISelectComponent>)[];
 }
+
 /**
  * Interface para uma única linha que contém embeds e componentes do discord.
  */
 export interface DiscordRows {
   /** Um objeto que contém embeds. */
   embeds?: EmbedBuilder[];
-  /** Um objeto que contém componentes. */
-  components?: ActionRowBuilder[];
+  /** Um objeto que contém componentes, agora ajustado para o tipo correto. */
+  components?: readonly (APIActionRowComponent<APIButtonComponent> | APIActionRowComponent<APISelectComponent>)[];
 }
 
 /**

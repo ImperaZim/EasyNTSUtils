@@ -1,4 +1,4 @@
-import { colorize, ForegroundColor } from "./Color.js";
+import { colorize, ForegroundColor } from "./Color";
 
 /**
  * Logger class for logging messages with different colors based on log type.

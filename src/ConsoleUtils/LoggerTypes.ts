@@ -1,4 +1,4 @@
-import { ForegroundColor } from "./Color.js";
+import { ForegroundColor } from "./Color";
 
 /**
  * Represents the available log types.

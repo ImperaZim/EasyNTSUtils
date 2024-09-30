@@ -110,7 +110,7 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
 export function buildSelects(selectsData: Selects, tags: Tags, row: string): DiscordSelectTypes[] {
   return Object.keys(selectsData).map((name) => {
     const selectData: SelectTypes = selectsData[name];
-    return buildButton(selectData, row, name, tags);
+    return buildSelect(selectData, row, name, tags);
   });
 }
 

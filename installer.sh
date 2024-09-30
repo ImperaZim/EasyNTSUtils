@@ -32,19 +32,19 @@ if (fs.existsSync(filePath)) {
       "Console": ["./ConsoleUtils"],
       "Json": ["./JsonUtils"],
       "MySQL": ["./MySQLUtils"],
-      "DiscordElementor/*": ["DiscordElementor/*"],
-      "DiscordElementor": ["DiscordElementor"],
-      "DiscordElementCollector/*": ["DiscordElementor/collector/*"],
-      "DiscordElementCollector": ["DiscordElementor/collector"],
-      "DiscordRow/*": ["DiscordElementor/row/*"],
-      "DiscordRow": ["DiscordElementor/row"],
-      "DiscordRowEmbed": ["DiscordElementor/row/embed"],
-      "DiscordRowButton": ["DiscordElementor/row/component/button"],
-      "DiscordRowSelect": ["DiscordElementor/row/component/select"],
-      "DiscordModal/*": ["DiscordElementor/modal/*"],
-      "DiscordModal": ["DiscordElementor/modal"],
-      "DiscordModalInput": ["DiscordElementor/modal/component/input"],
-      "DiscordModalComponent": ["DiscordElementor/modal/component"]
+      "DiscordElementor/*": ["./DiscordElementor/*"],
+      "DiscordElementor": ["./DiscordElementor"],
+      "DiscordElementCollector/*": ["./DiscordElementor/collector/*"],
+      "DiscordElementCollector": ["./DiscordElementor/collector"],
+      "DiscordRow/*": ["./DiscordElementor/row/*"],
+      "DiscordRow": ["./DiscordElementor/row"],
+      "DiscordRowEmbed": ["./DiscordElementor/row/embed"],
+      "DiscordRowButton": ["./DiscordElementor/row/component/button"],
+      "DiscordRowSelect": ["./DiscordElementor/row/component/select"],
+      "DiscordModal/*": ["./DiscordElementor/modal/*"],
+      "DiscordModal": ["./DiscordElementor/modal"],
+      "DiscordModalInput": ["./DiscordElementor/modal/component/input"],
+      "DiscordModalComponent": ["./DiscordElementor/modal/component"]
     }
   };
 

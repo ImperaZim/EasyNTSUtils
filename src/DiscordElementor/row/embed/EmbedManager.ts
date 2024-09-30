@@ -1,8 +1,10 @@
+import { 
+  Row,
+  Tags, getProcessedTags,
+  BuilderRegistry, Builder,
+  Embeds, EmbedData, EmbedField
+} from '../..';
 import { EmbedBuilder } from 'discord.js';
-import { Row } from '../../RowInterface';
-import { Tags, getProcessedTags } from '../../Text';
-import { BuilderRegistry, Builder } from '../../index';
-import { Embeds, EmbedData, EmbedField } from './EmbedInterface';
 
 /**
  * Constrói um array de embeds com base nos dados fornecidos.
@@ -29,7 +31,7 @@ export function buildEmbed(embedData: EmbedData, tags: Tags): EmbedBuilder {
 
   // Configurando a cor
   if (embedData.color) {
-    embed.setColor(getProcessedTags(embedData.color, tags));
+    embed.setColor(embedData.color);
   }
 
   // Configurando o título
@@ -46,7 +48,7 @@ export function buildEmbed(embedData: EmbedData, tags: Tags): EmbedBuilder {
   if (embedData.author) {
     embed.setAuthor({
       name: getProcessedTags(embedData.author.name, tags),
-      iconURL: getProcessedTags(embedData.author.iconURL, tags)
+      iconURL: embedData.author.iconURL
     });
   }
 
@@ -66,7 +68,6 @@ export function buildEmbed(embedData: EmbedData, tags: Tags): EmbedBuilder {
       embed.addFields({
         name: getProcessedTags(field.name, tags),
         value: getProcessedTags(field.value, tags)
-
       });
     });
   }
@@ -85,7 +86,7 @@ export function buildEmbed(embedData: EmbedData, tags: Tags): EmbedBuilder {
   if (embedData.footer) {
     embed.setFooter({
       text: getProcessedTags(embedData.footer.name, tags),
-      iconURL: getProcessedTags(embedData.footer.iconURL, tags)
+      iconURL: embedData.footer.iconURL
     });
   }
 

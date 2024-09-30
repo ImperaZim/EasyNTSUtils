@@ -26,22 +26,25 @@ if (fs.existsSync(filePath)) {
   // Atualiza o tsconfig.json com as novas opções
   data.compilerOptions = {
     ...data.compilerOptions,
-    "baseUrl": "./",
+    "baseUrl": "./@imperazim/",
     "paths": {
-      "Utils": ["./@imperazim/"],
-      "Console": ["./@imperazim/ConsoleUtils"],
-      "Json": ["./@imperazim/JsonUtils"],
-      "MySQL": ["./@imperazim/MySQLUtils"],
-      "DiscordElementor": ["./@imperazim/DiscordElementor"],
-      "DiscordElementCollector/*": ["./@imperazim/DiscordElementor/collector/*"],
-      "DiscordElementCollector": ["./@imperazim/DiscordElementor/collector"],
-      "DiscordRow": ["./@imperazim/DiscordElementor/row"],
-      "DiscordRowEmbed": ["./@imperazim/DiscordElementor/row/embed"],
-      "DiscordRowButton": ["./@imperazim/DiscordElementor/row/component/button"],
-      "DiscordRowSelect": ["./@imperazim/DiscordElementor/row/component/select"],
-      "DiscordModal": ["./@imperazim/DiscordElementor/modal"],
-      "DiscordModalInput": ["./@imperazim/DiscordElementor/modal/component/input"],
-      "DiscordModalComponent": ["./@imperazim/DiscordElementor/modal/component"]
+      "Utils": ["./"],
+      "Console": ["./ConsoleUtils"],
+      "Json": ["./JsonUtils"],
+      "MySQL": ["./MySQLUtils"],
+      "DiscordElementor/*": ["DiscordElementor/*"],
+      "DiscordElementor": ["DiscordElementor"],
+      "DiscordElementCollector/*": ["DiscordElementor/collector/*"],
+      "DiscordElementCollector": ["DiscordElementor/collector"],
+      "DiscordRow/*": ["DiscordElementor/row/*"],
+      "DiscordRow": ["DiscordElementor/row"],
+      "DiscordRowEmbed": ["DiscordElementor/row/embed"],
+      "DiscordRowButton": ["DiscordElementor/row/component/button"],
+      "DiscordRowSelect": ["DiscordElementor/row/component/select"],
+      "DiscordModal/*": ["DiscordElementor/modal/*"],
+      "DiscordModal": ["DiscordElementor/modal"],
+      "DiscordModalInput": ["DiscordElementor/modal/component/input"],
+      "DiscordModalComponent": ["DiscordElementor/modal/component"]
     }
   };
 

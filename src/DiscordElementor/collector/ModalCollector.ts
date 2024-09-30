@@ -1,7 +1,7 @@
-import { 
+import {
   ChatInputCommandInteraction,
   ModalSubmitInteraction,
-  InteractionCollector 
+  InteractionCollector
 } from "discord.js";
 
 /**
@@ -10,17 +10,17 @@ import {
 export class ModalCollector {
   constructor(
     response: ChatInputCommandInteraction,
+    timeout: number,
     callback: (interaction: ModalSubmitInteraction) => void
   ) {
-    if (response && response.awaitModalSubmit) {
-      const collector: InteractionCollector<ModalSubmitInteraction> = response.awaitModalSubmit({
-        time: null,
-        filter: (interaction: ModalSubmitInteraction) => interaction.isModalSubmit(),
-      });
+    const collector: InteractionCollector<ModalSubmitInteraction> = response.client.on('interactionCreate', (interaction) => {
+      if (!interaction.isModalSubmit()) return;
 
-      if (collector) {
-        collector.on("collect", callback); // Callback chamado quando uma interação é coletada
+      if (interaction.user.id === response.user.id) {
+        callback(interaction);
       }
-    }
+    });
+
+    collector.setTimeout(timeout);
   }
 }

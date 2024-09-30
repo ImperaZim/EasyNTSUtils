@@ -8,6 +8,8 @@ git clone 'https://github.com/ImperaZim/EasyNTSUtils.git'
 cd EasyNTSUtils
 mv ./src/* ../
 
+ls
+
 cd ../ 
 rm -rf EasyNTSUtils
 cd ../../

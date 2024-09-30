@@ -1,8 +1,7 @@
 
-mkdir -p ./src/
-mkdir -p ./src/utils/
+mkdir -p ./ENTSU/
 
-cd ./src/utils/
+cd ./ENTSU/
 
 rm -rf EmbedUtils/ JsonUtils/ ConsoleUtils/ MySQLUtils/ index.ts
 

@@ -1,5 +1,5 @@
 import { 
-  InteractionResponse,
+  ChatInputCommandInteraction,
   ModalSubmitInteraction,
   InteractionCollector 
 } from "discord.js";
@@ -9,7 +9,7 @@ import {
  */
 export class ModalCollector {
   constructor(
-    response: InteractionResponse,
+    response: ChatInputCommandInteraction,
     callback: (interaction: ModalSubmitInteraction) => void
   ) {
     if (response && response.awaitModalSubmit) {

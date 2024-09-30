@@ -10,8 +10,5 @@ export * from "./JsonUtils/JsonFile";
 // #mysql
 export * from "./MySQLUtils/MySQL";
 
-// #embed
-export * from "./EmbedUtils/EmbedManager";
-export * from "./EmbedUtils/EmbedRegistry";
-export * from "./EmbedUtils/EmbedCollector";
-export * from "./EmbedUtils/interfaces/BuilderInterface"
+// DiscordElementor 
+export * from "./DiscordElementor";

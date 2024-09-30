@@ -4,18 +4,22 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
+    "dev": "tsx dev.ts",
     "start": "tsx src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.6.1",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "colorette": "^2.0.20",
     "discord.js": "^14.16.2",
-    "jq": "^1.7.2",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "tsc": "^2.0.4"
   },
   "description": "",
   "repository": {

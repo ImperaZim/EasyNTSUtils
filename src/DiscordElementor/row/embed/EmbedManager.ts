@@ -1,4 +1,4 @@
-import { 
+import {
   Row,
   Tags, getProcessedTags,
   BuilderRegistry, Builder,
@@ -29,10 +29,7 @@ export function buildEmbeds(embedsData: Embeds, tags: Tags): EmbedBuilder[] {
 export function buildEmbed(embedData: EmbedData, tags: Tags): EmbedBuilder {
   const embed = new EmbedBuilder();
 
-  // Configurando a cor
-  if (embedData.color) {
-    embed.setColor(embedData.color);
-  }
+  embedData.color && embed.setColor(embedData.color ?? null);
 
   // Configurando o título
   if (embedData.title) {
@@ -112,17 +109,17 @@ export function getEmbed(row: string, name: string, tags: Tags): EmbedBuilder {
     throw new Error(`Lista ${row} não encontrada!`);
   }
 
-  const rowData: { components?: { embeds?: Embeds } } = builder.rows[row];
+  const rowData: Row = builder.rows[row];
 
   if (!rowData.components) {
     throw new Error(`Não foram encontrados componentes na lista ${row}!`);
   }
 
-  const embeds: Embeds = rowData.components.embeds;
-
-  if (!embeds) {
+  if (!rowData.components.embeds) {
     throw new Error(`Não foram encontrados embeds nos componentes da lista ${row}!`);
   }
+
+  const embeds: Embeds = rowData.components.embeds;
 
   if (!embeds[name]) {
     throw new Error(`O embed ${name} não existe nos componentes da lista ${row}!`);

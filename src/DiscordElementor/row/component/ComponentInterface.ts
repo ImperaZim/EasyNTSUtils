@@ -1,5 +1,4 @@
-import { Buttons } from './button/ButtonInterface';  // Importando a interface de Buttons
-import { Selects } from './select/SelectInterface';   // Importando a interface de Selects
+import { Buttons, Selects } from "../..";
 
 /**
  * Interface para os componentes que contêm botões e selects.

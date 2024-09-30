@@ -1,5 +1,4 @@
-import { Embeds } from './embed/EmbedInterface'; // Importando a interface de Embeds
-import { Components } from './component/ComponentInterface'; // Importando a interface de components
+import { Embeds, Components } from "../";
 import { EmbedBuilder, ActionRowBuilder } from "discord.js";
 
 /**

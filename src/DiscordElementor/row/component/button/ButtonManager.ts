@@ -1,9 +1,10 @@
+import { 
+  Row,
+  Components,
+  ButtonTypes, Buttons,
+  Tags, getProcessedTags
+} from '../../..';
 import { ButtonBuilder, ButtonStyle } from 'discord.js';
-import { Row } from '../../RowInterface';
-import { Components } from '../ComponentInterface';
-import { ButtonTypes, Buttons } from './ButtonInterface';
-import { BuilderRegistry, Builder } from '../../../index';
-import { Tags, getProcessedTags } from '../../../Text';
 
 /**
  * Constrói um único botão com base nos dados fornecidos.

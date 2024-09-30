@@ -1,9 +1,11 @@
+import {
+  Row,
+  Tags,
+  getButtons,
+  BuilderRegistry, Builder,
+  getSelects, DiscordSelectTypes
+} from "../..";
 import { ActionRowBuilder, ButtonBuilder } from 'discord.js';
-import { Tags } from '../../../Text';
-import { Row } from '../RowInterface';
-import { BuilderRegistry, Builder } from '../../index';
-import { getButtons } from './button/ButtonManager';
-import { getSelects, DiscordSelectTypes } from './select/';
 
 /**
  * Obtém todos os componentes de uma linha específica.

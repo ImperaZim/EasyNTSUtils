@@ -6,19 +6,15 @@ import {
   RoleSelectMenuBuilder
 } from 'discord.js';
 import {
-  SelectStringData,
-  SelectStringDataOption,
-  SelectUserData,
-  SelectChannelData,
-  SelectRoleData,
-  DiscordSelectTypes,
-  SelectTypes,
-  Selects
-} from './SelectInterface';
-import { Row } from '../../RowInterface';
-import { Components } from '../ComponentInterface';
-import { BuilderRegistry, Builder } from '../../../index';
-import { Tags, getProcessedTags } from '../../../Text';
+  Row,
+  Components,
+  Selects, SelectTypes,
+  Tags, getProcessedTags,
+  BuilderRegistry, Builder,
+  SelectUserData, SelectChannelData,
+  SelectRoleData, DiscordSelectTypes,
+  SelectStringData, SelectStringDataOption,
+} from '../../..';
 
 /**
  * Constrói um único select com base nos dados fornecidos.

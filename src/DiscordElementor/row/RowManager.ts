@@ -1,8 +1,9 @@
-import { DiscordRows, Rows, Row } from './RowInterface';
-import { getEmbeds } from './embed/EmbedManager';
-import { getComponents } from './component/ComponentManager';
-import { BuilderRegistry, Builder } from '../index';
-import { Tags } from '../Text';
+import {
+  Tags,
+  DiscordRows, Rows, Row,
+  getEmbeds, getComponents,
+  BuilderRegistry, Builder,
+} from "../";
 
 /**
  * Obtém todos os ActionRows de uma linha específica.

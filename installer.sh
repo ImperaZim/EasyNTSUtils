@@ -47,9 +47,7 @@ if (fs.existsSync(filePath)) {
 EOF
 
 node updateTsConfig.js
-
 rm updateTsConfig.js
-fi;
 
 npm i colorette --silent
 

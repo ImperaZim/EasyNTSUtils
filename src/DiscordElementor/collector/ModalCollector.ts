@@ -1,8 +1,7 @@
-import {
+import { 
   InteractionResponse,
   ModalSubmitInteraction,
-  InteractionCollector,
-  Client
+  InteractionCollector 
 } from "discord.js";
 
 /**
@@ -10,16 +9,18 @@ import {
  */
 export class ModalCollector {
   constructor(
-    client: Client,
+    response: InteractionResponse,
     callback: (interaction: ModalSubmitInteraction) => void
   ) {
-    const collector: InteractionCollector<ModalSubmitInteraction> = client.awaitModalSubmit({
-      time: null,
-      filter: (interaction: ModalSubmitInteraction) => interaction.isModalSubmit(),
-    });
+    if (response && response.awaitModalSubmit) {
+      const collector: InteractionCollector<ModalSubmitInteraction> = response.awaitModalSubmit({
+        time: null,
+        filter: (interaction: ModalSubmitInteraction) => interaction.isModalSubmit(),
+      });
 
-    if (collector) {
-      collector.on("collect", callback);
+      if (collector) {
+        collector.on("collect", callback); // Callback chamado quando uma interação é coletada
+      }
     }
   }
 }

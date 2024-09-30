@@ -1,6 +1,5 @@
 import {
   Tags,
-  Modal,
   getInputs,
   BuilderRegistry,
   Builder,

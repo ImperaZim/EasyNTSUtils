@@ -5,6 +5,7 @@ import {
   UserSelectMenuInteraction,
   RoleSelectMenuInteraction,
   ChannelSelectMenuInteraction,
+  MentionableSelectMenuInteraction,
   InteractionCollector,
 } from "discord.js";
 
@@ -20,6 +21,7 @@ export class SelectMenuCollector {
         | UserSelectMenuInteraction
         | RoleSelectMenuInteraction
         | ChannelSelectMenuInteraction
+        | MentionableSelectMenuInteraction
     ) => void,
     timeout: number
   ) {
@@ -29,6 +31,7 @@ export class SelectMenuCollector {
         | UserSelectMenuInteraction
         | RoleSelectMenuInteraction
         | ChannelSelectMenuInteraction
+        | MentionableSelectMenuInteraction
       > = response.createMessageComponentCollector({
         time: timeout,
         componentType: [

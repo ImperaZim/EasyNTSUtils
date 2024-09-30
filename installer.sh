@@ -1,18 +1,30 @@
+# Cria o diretório ENTSU
+mkdir -p ./ENTSU/
 
-mkdir -p ./src/
-mkdir -p ./src/utils/
+# Navega até o diretório ENTSU
+cd ./ENTSU/
 
-cd ./src/utils/
-
+# Remove os diretórios e arquivos antigos
 rm -rf EmbedUtils/ JsonUtils/ ConsoleUtils/ MySQLUtils/ index.ts
 
-git clone 'https://github.com/ImperaZim/EasyNTSUtils.git' 
+# Clona o repositório EasyNTSUtils
+git clone 'https://github.com/ImperaZim/EasyNTSUtils.git'
+
+# Navega até o diretório do repositório clonado
 cd EasyNTSUtils
+
+# Move todos os arquivos do repositório clonado para ENTSU
 mv ./src/* ../
 
-cd ../ 
+# Volta para o diretório ENTSU
+cd ../
+
+# Remove o diretório EasyNTSUtils
 rm -rf EasyNTSUtils
-cd ../../
+
+# Volta para o diretório inicial
+cd ../
+
 
 if [ -f tsconfig.json ]; then 
 cat << 'EOF' > updateTsConfig.js

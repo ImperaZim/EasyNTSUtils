@@ -2,7 +2,8 @@ import {
   Row,
   Components,
   ButtonTypes, Buttons,
-  Tags, getProcessedTags
+  Tags, getProcessedTags,
+  BuilderRegistry, Builder
 } from '../../..';
 import { ButtonBuilder, ButtonStyle } from 'discord.js';
 
@@ -137,10 +138,12 @@ export function getButtons(row: string, tags: Tags): ButtonBuilder[] {
   if (!componentsData.buttons) {
     throw new Error(`Não foram encontrados botões nos componentes da lista ${row}!`);
   }
+  
+  const buttonsData: Buttons[] = componentsData.buttons;
 
   // Obter todos os botões e construir o array de ButtonBuilder
-  return Object.keys(componentsData.buttons).map((name) => {
-    const buttonData: ButtonTypes = componentsData.buttons[name];
+  return Object.keys(buttonsData).map((name) => {
+    const buttonData: ButtonTypes = buttonsData[name];
     return buildButton(buttonData, row, name, tags);
   });
 }

@@ -1,5 +1,6 @@
 
-rm -rf ./*
+rm -rf @imperazim
+
 git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git
 
 mkdir -p @imperazim

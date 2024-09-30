@@ -107,12 +107,11 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
  * @param row Nome da linha.
  * @returns Um array de objetos DiscordSelectTypes configurados.
  */
-export function buildSelects(selectsData: Selects[], tags: Tags, row: string): DiscordSelectTypes[] {
-  const selects: DiscordSelectTypes[] = [];
-  for (const key in Object.keys(selectsData)) {
-    selects.push(buildSelect(selectsData[key], tags, row, key));
-  }
-  return selects;
+export function buildSelects(selectsData: Selects, tags: Tags, row: string): DiscordSelectTypes[] {
+  return Object.keys(selectsData).map((name) => {
+    const selectData: SelectTypes = selectsData[name];
+    return buildButton(selectData, row, name, tags);
+  });
 }
 
 /**
@@ -183,10 +182,11 @@ export function getSelects(row: string, tags: Tags): DiscordSelectTypes[] {
   if (!componentsData.selects) {
     throw new Error(`Não foram encontrados selects nos componentes da lista ${row}!`);
   }
-
-  // Obter todos os selects e construir o array de DiscordSelectTypes
-  return Object.keys(componentsData.selects).map((name) => {
-    const selectData: SelectTypes = componentsData.selects[name];
+  
+  const selectsData: Selects = componentsData.selects;
+  
+  return Object.keys(selectsData).map((name) => {
+    const selectData: SelectTypes = selectsData[name];
     return buildSelect(selectData, tags, row, name);
   });
 }

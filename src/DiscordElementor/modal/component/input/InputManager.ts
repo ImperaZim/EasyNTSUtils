@@ -1,6 +1,6 @@
 import {
   Tags, getProcessedTags,
-  Modal, ModalComponents, Input,
+  Modal, ModalComponents, Input, Inputs,
   BuilderRegistry, Builder,
 } from '../../../';
 import { TextInputBuilder } from "discord.js";
@@ -116,13 +116,15 @@ export function getInputs(modal: string, tags: Tags): TextInputBuilder[] {
     throw new Error(`Não foram encontrados inputs nos componentes da modal ${modal}!`);
   }
 
+  const inputsData: Inputs = componentsData.inputs;
+
   // Obter todos os campos de entrada e construir o array de TextInputBuilder
-  return Object.keys(componentsData.inputs).map((name) => {
-    const inputData: Input | undefined = componentsData.inputs[name];
-    
-    if (!inputData) {
+  return Object.keys(inputsData).map((name) => {
+    if (!inputsData[name]) {
       throw new Error(`Não existe nenhum input com nome ${name} nos componentes da modal ${modal}!`);
     }
+
+    const inputData: Input = inputsData[name];
 
     return buildInput(inputData, modal, name, tags);
   });

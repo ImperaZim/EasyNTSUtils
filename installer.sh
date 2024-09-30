@@ -12,7 +12,8 @@ ls
 
 cd ../ 
 rm -rf EasyNTSUtils
-cd ../../
+
+ls
 
 
 

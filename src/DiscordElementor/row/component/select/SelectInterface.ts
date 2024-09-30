@@ -32,7 +32,7 @@ export interface SelectStringData {
   /** Se o select está desabilitado ou não */
   disabled?: boolean;
   /** Texto exibido como placeholder no select */
-  placeholder: string;
+  placeholder?: string;
   /** Opções disponíveis no select */
   options: SelectStringDataOption[];
   onSubmit?: onSubmit;
@@ -56,7 +56,7 @@ export interface SelectUserData {
   /** Se o select está desabilitado ou não */
   disabled?: boolean;
   /** Texto exibido como placeholder no select */
-  placeholder: string;
+  placeholder?: string;
   /** Valor mínimo de seleções */
   minValue?: number;
   /** Valor máximo de seleções */
@@ -82,7 +82,7 @@ export interface SelectChannelData {
   /** Se o select está desabilitado ou não */
   disabled?: boolean;
   /** Texto exibido como placeholder no select */
-  placeholder: string;
+  placeholder?: string;
   /** Valor mínimo de seleções */
   minValue?: number;
   /** Valor máximo de seleções */
@@ -110,7 +110,7 @@ export interface SelectRoleData {
   /** Se o select está desabilitado ou não */
   disabled?: boolean;
   /** Texto exibido como placeholder no select */
-  placeholder: string;
+  placeholder?: string;
   /** Valor mínimo de seleções */
   minValue?: number;
   /** Valor máximo de seleções */

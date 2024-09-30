@@ -7,6 +7,6 @@ export interface onSubmit {
 
 export interface Modal {
   title: string;
-  components: Components;
+  components?: Components;
   onSubmit?: onSubmit;
 }

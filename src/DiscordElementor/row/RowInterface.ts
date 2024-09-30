@@ -7,18 +7,18 @@ import { EmbedBuilder, ActionRowBuilder } from "discord.js";
  */
 export interface Row {
   /** Um objeto que contém embeds. */
-  embeds: Embeds;
+  embeds?: Embeds;
   /** Um objeto que contém componentes. */
-  components: Components;
+  components?: Components;
 }
 /**
  * Interface para uma única linha que contém embeds e componentes do discord.
  */
 export interface DiscordRows {
   /** Um objeto que contém embeds. */
-  embeds: EmbedBuilder[];
+  embeds?: EmbedBuilder[];
   /** Um objeto que contém componentes. */
-  components: ActionRowBuilder[];
+  components?: ActionRowBuilder[];
 }
 
 /**

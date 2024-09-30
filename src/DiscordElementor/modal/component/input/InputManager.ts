@@ -77,11 +77,11 @@ export function getInput(modal: string, name: string, tags: Tags): TextInputBuil
     throw new Error(`Não foram encontrados inputs nos componentes da modal ${modal}!`);
   }
 
-  if (!componentsData.inputs[name]) {
+  const inputData: Input | undefined = componentsData.inputs[name];
+
+  if (!inputData) {
     throw new Error(`O Input ${name} não existe nos componentes da modal ${modal}!`);
   }
-
-  const inputData: Input = componentsData.inputs[name];
 
   return buildInput(inputData, modal, name, tags);
 }
@@ -118,10 +118,12 @@ export function getInputs(modal: string, tags: Tags): TextInputBuilder[] {
 
   // Obter todos os campos de entrada e construir o array de TextInputBuilder
   return Object.keys(componentsData.inputs).map((name) => {
-    if (!componentsData.inputs[name]) {
+    const inputData: Input | undefined = componentsData.inputs[name];
+    
+    if (!inputData) {
       throw new Error(`Não existe nenhum input com nome ${name} nos componentes da modal ${modal}!`);
     }
-    const inputData: Input = componentsData.inputs[name];
+
     return buildInput(inputData, modal, name, tags);
   });
 }

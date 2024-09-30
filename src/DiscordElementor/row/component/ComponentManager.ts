@@ -32,8 +32,8 @@ export function getComponents(row: string, tags: Tags): ActionRowBuilder<Message
   }
 
   const rows: ActionRowBuilder<MessageActionRowComponentBuilder>[] = [];
-  rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags) as MessageActionRowComponentBuilder[]));
-  rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags) as MessageActionRowComponentBuilder[]));
+  rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags) as ButtonBuilder[]));
+  rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags) as DiscordSelectTypes[]));
 
   return rows; // Retorna todos os ActionRowBuilder configurados
 }

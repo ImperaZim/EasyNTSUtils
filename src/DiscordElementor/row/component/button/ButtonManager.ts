@@ -8,6 +8,17 @@ import {
 import { ButtonBuilder, ButtonStyle } from 'discord.js';
 
 /**
+ * Valida a existência de uma propriedade em um objeto.
+ * @param obj O objeto a ser validado.
+ * @param name O nome da propriedade a ser verificada.
+ * @param errorMessage Mensagem de erro caso a propriedade não exista.
+ */
+function validateProperty<T>(obj: T | undefined, name: string, errorMessage: string): T {
+  if (!obj) throw new Error(errorMessage);
+  return obj;
+}
+
+/**
  * Constrói um único botão com base nos dados fornecidos.
  * @param buttonData Dados do botão a ser construído.
  * @param row Nome da linha a qual o botão pertence.
@@ -19,36 +30,20 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
   const button = new ButtonBuilder();
 
   // Define o rótulo do botão, se fornecido
-  if (buttonData.data.label) {
-    button.setLabel(getProcessedTags(buttonData.data.label, tags));
-  }
+  const label = buttonData.data?.label;
+  if (label) button.setLabel(getProcessedTags(label, tags));
 
   // Verifica o tipo do botão e configura as propriedades corretamente
-  switch (buttonData.type) {
-    case ButtonStyle.Link:
-      button.setStyle(ButtonStyle.Link);
-      if (buttonData.data.url) {
-        button.setURL(getProcessedTags(buttonData.data.url, tags));
-      }
-      break;
+  if (buttonData.type === ButtonStyle.Link) {
+    button.setStyle(ButtonStyle.Link);
+    const url = buttonData.data?.url;
+    if (url) button.setURL(getProcessedTags(url, tags));
+  } else {
+    button.setStyle(buttonData.type);
+    button.setCustomId(getProcessedTags(`${row}.${buttonName}`, tags));
 
-    case ButtonStyle.Primary:
-    case ButtonStyle.Secondary:
-    case ButtonStyle.Success:
-    case ButtonStyle.Danger:
-      button.setStyle(buttonData.type);
-
-      // Gera o customId usando o formato `row.buttonName`
-      const customId = `${row}.${buttonName}`;
-      button.setCustomId(getProcessedTags(customId, tags));
-
-      if (buttonData.data.emoji) {
-        button.setEmoji(getProcessedTags(buttonData.data.emoji, tags));
-      }
-      break;
-
-    default:
-      throw new Error('Tipo de botão desconhecido');
+    const emoji = buttonData.data?.emoji;
+    if (emoji) button.setEmoji(getProcessedTags(emoji, tags));
   }
 
   return button;
@@ -62,10 +57,21 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
  * @returns Um array de objetos ButtonBuilder configurados.
  */
 export function buildButtons(buttonsData: Buttons, row: string, tags: Tags): ButtonBuilder[] {
-  return Object.keys(buttonsData).map((name) => {
-    const buttonData: ButtonTypes = buttonsData[name];
-    return buildButton(buttonData, row, name, tags);
-  });
+  return Object.entries(buttonsData).map(([name, buttonData]) => 
+    buildButton(buttonData, row, name, tags)
+  );
+}
+
+/**
+ * Obtém os dados de uma linha e valida sua existência.
+ * @param row Nome da linha onde o botão está localizado.
+ * @returns Dados da linha.
+ * @throws Erro se a linha ou componentes não forem encontrados.
+ */
+function getRowData(row: string): Components {
+  const builder = validateProperty(BuilderRegistry.builder, 'builder', 'Lista de builders não encontrada!');
+  const rowData = validateProperty(builder.rows?.[row], 'rows', `Lista ${row} não encontrada!`);
+  return validateProperty(rowData.components, 'components', `Não foram encontrados componentes na lista ${row}!`);
 }
 
 /**
@@ -74,36 +80,11 @@ export function buildButtons(buttonsData: Buttons, row: string, tags: Tags): But
  * @param name Nome do botão a ser obtido.
  * @param tags Tags de replacement de mensagens.
  * @returns Um objeto ButtonBuilder configurado.
- * @throws Erros se a linha ou botão não forem encontrados.
+ * @throws Erro se o botão não for encontrado.
  */
 export function getButton(row: string, name: string, tags: Tags): ButtonBuilder {
-  const builder: Builder = BuilderRegistry.builder;
-
-  if (!builder.rows) {
-    throw new Error('Lista de builders não encontrada!');
-  }
-
-  if (!builder.rows[row]) {
-    throw new Error(`Lista ${row} não encontrada!`);
-  }
-
-  const rowData: Row = builder.rows[row];
-
-  if (!rowData.components) {
-    throw new Error(`Não foram encontrados componentes na lista ${row}!`);
-  }
-
-  const componentsData: Components = rowData.components;
-
-  if (!componentsData.buttons) {
-    throw new Error(`Não foram encontrados botões nos componentes da lista ${row}!`);
-  }
-
-  if (!componentsData.buttons[name]) {
-    throw new Error(`O botão ${name} não existe nos componentes da lista ${row}!`);
-  }
-
-  const buttonData: ButtonTypes = componentsData.buttons[name];
+  const components = getRowData(row);
+  const buttonData = validateProperty(components.buttons?.[name], 'buttons', `O botão ${name} não existe nos componentes da lista ${row}!`);
   return buildButton(buttonData, row, name, tags);
 }
 
@@ -112,35 +93,10 @@ export function getButton(row: string, name: string, tags: Tags): ButtonBuilder 
  * @param row Nome da linha de onde os botões devem ser obtidos.
  * @param tags Tags de replacement de mensagens.
  * @returns Um array de objetos ButtonBuilder configurados.
- * @throws Erros se a linha não for encontrada ou se não houver botões.
+ * @throws Erro se não houver botões.
  */
 export function getButtons(row: string, tags: Tags): ButtonBuilder[] {
-  const builder: Builder = BuilderRegistry.builder;
-
-  if (!builder.rows) {
-    throw new Error('Lista de builders não encontrada!');
-  }
-
-  if (!builder.rows[row]) {
-    throw new Error(`Lista ${row} não encontrada!`);
-  }
-
-  const rowData: Row = builder.rows[row];
-
-  if (!rowData.components) {
-    throw new Error(`Não foram encontrados componentes na lista ${row}!`);
-  }
-
-  const componentsData: Components = rowData.components;
-
-  if (!componentsData.buttons) {
-    throw new Error(`Não foram encontrados botões nos componentes da lista ${row}!`);
-  }
-
-  const buttonsData: Buttons = componentsData.buttons;
-
-  return Object.keys(buttonsData).map((name) => {
-    const buttonData: ButtonTypes = buttonsData[name];
-    return buildButton(buttonData, row, name, tags);
-  });
+  const components = getRowData(row);
+  const buttonsData = validateProperty(components.buttons, 'buttons', `Não foram encontrados botões nos componentes da lista ${row}!`);
+  return buildButtons(buttonsData, row, tags);
 }

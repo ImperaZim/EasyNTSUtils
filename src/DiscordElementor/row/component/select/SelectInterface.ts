@@ -12,8 +12,23 @@ interface onSubmit {
 }
 
 /**
- * Interface para os dados do select de string.
- * Um select que permite ao usuário escolher entre várias opções de texto.
+ * Interface genérica para dados de selects com propriedades comuns.
+ */
+interface BaseSelectData {
+  /** Se o select está desabilitado ou não */
+  disabled?: boolean;
+  /** Texto exibido como placeholder no select */
+  placeholder?: string;
+  /** Valor mínimo de seleções */
+  minValue?: number;
+  /** Valor máximo de seleções */
+  maxValue?: number;
+  /** Função de callback para envio */
+  onSubmit?: onSubmit;
+}
+
+/**
+ * Interface para as opções de selects de string.
  */
 export interface SelectStringDataOption {
   /** Texto exibido na opção */
@@ -28,14 +43,9 @@ export interface SelectStringDataOption {
  * Interface para os dados do select de string.
  * Um select que permite ao usuário escolher entre várias opções de texto.
  */
-export interface SelectStringData {
-  /** Se o select está desabilitado ou não */
-  disabled?: boolean;
-  /** Texto exibido como placeholder no select */
-  placeholder?: string;
+export interface SelectStringData extends BaseSelectData {
   /** Opções disponíveis no select */
   options: SelectStringDataOption[];
-  onSubmit?: onSubmit;
 }
 
 /**
@@ -45,24 +55,14 @@ export interface SelectStringData {
 export interface SelectString {
   /** Tipo do select: string */
   type: "string";
-  data: SelectStringData; // Usando a interface de dados específica
+  data: SelectStringData;
 }
 
 /**
  * Interface para os dados do select de usuário.
  * Um select que permite ao usuário escolher um ou mais usuários.
  */
-export interface SelectUserData {
-  /** Se o select está desabilitado ou não */
-  disabled?: boolean;
-  /** Texto exibido como placeholder no select */
-  placeholder?: string;
-  /** Valor mínimo de seleções */
-  minValue?: number;
-  /** Valor máximo de seleções */
-  maxValue?: number;
-  onSubmit?: onSubmit;
-}
+export interface SelectUserData extends BaseSelectData {}
 
 /**
  * Interface para o select de usuário.
@@ -71,25 +71,16 @@ export interface SelectUserData {
 export interface SelectUser {
   /** Tipo do select: user */
   type: "user";
-  data: SelectUserData; // Usando a interface de dados específica
+  data: SelectUserData;
 }
 
 /**
  * Interface para os dados do select de canal.
  * Um select que permite ao usuário escolher entre canais específicos.
  */
-export interface SelectChannelData {
-  /** Se o select está desabilitado ou não */
-  disabled?: boolean;
-  /** Texto exibido como placeholder no select */
-  placeholder?: string;
-  /** Valor mínimo de seleções */
-  minValue?: number;
-  /** Valor máximo de seleções */
-  maxValue?: number;
+export interface SelectChannelData extends BaseSelectData {
   /** Tipos de canal permitidos */
   channelTypes: ChannelType[];
-  onSubmit?: onSubmit;
 }
 
 /**
@@ -99,24 +90,14 @@ export interface SelectChannelData {
 export interface SelectChannel {
   /** Tipo do select: channel */
   type: "channel";
-  data: SelectChannelData; // Usando a interface de dados específica
+  data: SelectChannelData;
 }
 
 /**
  * Interface para os dados do select de cargo (role).
  * Um select que permite ao usuário escolher um ou mais cargos.
  */
-export interface SelectRoleData {
-  /** Se o select está desabilitado ou não */
-  disabled?: boolean;
-  /** Texto exibido como placeholder no select */
-  placeholder?: string;
-  /** Valor mínimo de seleções */
-  minValue?: number;
-  /** Valor máximo de seleções */
-  maxValue?: number;
-  onSubmit?: onSubmit;
-}
+export interface SelectRoleData extends BaseSelectData {}
 
 /**
  * Interface para o select de cargo (role).
@@ -125,11 +106,11 @@ export interface SelectRoleData {
 export interface SelectRole {
   /** Tipo do select: role */
   type: "role";
-  data: SelectRoleData; // Usando a interface de dados específica
+  data: SelectRoleData;
 }
 
 /**
- * Tipo que abrange todos os tipos de selects do discord.
+ * Tipo que abrange todos os tipos de selects do Discord.
  * Isso inclui selects de string, usuário, canal e cargo.
  */
 export type DiscordSelectTypes =

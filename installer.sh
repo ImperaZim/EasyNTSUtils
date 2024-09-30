@@ -9,9 +9,11 @@ git clone 'https://github.com/ImperaZim/EasyNTSUtils.git'
 cd EasyNTSUtils
 mv ./src/* ../
 
-cd ../
+cd ..
 rm -rf EasyNTSUtils
-cd ../
+cd ..
+
+ls
 
 cat << 'EOF' > updateTsConfig.js
 const fs = require('fs');

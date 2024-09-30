@@ -36,10 +36,10 @@ export function getComponents(row: string, tags: Tags): ActionRowBuilder<Message
 
   const componentsData: Components = rowData.components;
   
-  if (componentsData.buttons && componentsData.buttons.length >= 1) {
+  if (componentsData.buttons) {
   rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags) as ButtonBuilder[]));
   }
-  if (componentsData.selects && componentsData.selects.length >= 1) {
+  if (componentsData.selects) {
   rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags) as DiscordSelectTypes[]));
   }
 

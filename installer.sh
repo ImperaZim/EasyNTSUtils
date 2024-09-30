@@ -6,7 +6,7 @@ cd ./src/utils/
 
 rm -rf EmbedUtils/ JsonUtils/ ConsoleUtils/ MySQLUtils/ index.ts
 
-git clone "https://github.com/ImperaZim/EasyNTSUtils.git" 
+git clone 'https://github.com/ImperaZim/EasyNTSUtils.git' 
 cd EasyNTSUtils
 mv ./src/* ../
 
@@ -25,23 +25,36 @@ if (fs.existsSync(filePath)) {
   // Adiciona baseUrl
   data.compilerOptions = {
     ...data.compilerOptions,
-    baseUrl: './',
-    paths: {
-      ...data.compilerOptions.paths,
-      '#utils': ['./src/utils/index.ts'],
-      '#console': ['./src/utils/ConsoleUtils/index.ts'],
-      '#json': ['./src/utils/JsonUtils/index.ts'],
-      '#mysql': ['./src/MySQLUtils/index.ts'],
-      '#embed': ['./src/utils/EmbedUtils/index.ts'],
-    },
+    "baseUrl": "./src/",
+    "paths": {
+      "Utils": ["./"],
+      "Console": ["./ConsoleUtils"],
+      "Json": ["./JsonUtils"],
+      "MySQL": ["./MySQLUtils"],
+      "DiscordElementor/*": ["DiscordElementor/*"],
+      "DiscordElementor": ["DiscordElementor"],
+      "DiscordElementCollector/*": ["DiscordElementor/collector/*"],
+      "DiscordElementCollector": ["DiscordElementor/collector"],
+      "DiscordRow/*": ["DiscordElementor/row/*"],
+      "DiscordRow": ["DiscordElementor/row"],
+      "DiscordRowEmbed": ["DiscordElementor/row/embed"],
+      "DiscordRowButton": ["DiscordElementor/row/component/button"],
+      "DiscordRowSelect": ["DiscordElementor/row/component/select"],
+      "DiscordModal/*": ["DiscordElementor/modal/*"],
+      "DiscordModal": ["DiscordElementor/modal"],
+      "DiscordModalInput": ["DiscordElementor/modal/component/input"],
+      "DiscordModalComponent": ["DiscordElementor/modal/component"]
+    }
   };
 }
 EOF
 
 node updateTsConfig.js
 
-rm updateTsConfig.js
+rm updateTsConfig.js 
+
+npm i colorette
 
 rm -rf ./installer.sh 
 
-echo "EasyNTSUtils Instalado!";
+echo 'EasyNTSUtils Instalado!';

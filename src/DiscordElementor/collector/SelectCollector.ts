@@ -27,9 +27,9 @@ export class SelectMenuCollector {
     timeout: number
   ) {
     if (response) {
-      const collector: InteractionCollector<StringSelectMenuInteraction<CacheType> | UserSelectMenuInteraction<CacheType> | RoleSelectMenuInteraction<CacheType> | MentionableSelectMenuInteraction<CacheType> | ChannelSelectMenuInteraction<CacheType>> = response.createMessageComponentCollector({
+      const collector: InteractionCollector<StringSelectMenuInteraction | UserSelectMenuInteraction | RoleSelectMenuInteraction | MentionableSelectMenuInteraction | ChannelSelectMenuInteraction> = response.createMessageComponentCollector({
         time: timeout,
-        componentType: ComponentType.StringSelect | ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect,
+        componentType: ComponentType.StringSelect | ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect | ComponentType.MentionableSelect,
         filter: (
           interaction:
             | StringSelectMenuInteraction

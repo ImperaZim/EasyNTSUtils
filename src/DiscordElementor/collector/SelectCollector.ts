@@ -8,27 +8,36 @@ import {
   MentionableSelectMenuInteraction,
 } from "discord.js";
 
-/**
- * Coletor de interações de menus de seleção.
- */
-export class SelectMenuCollector {
+export class SelectCollector {
   constructor(
-    response: InteractionResponse,
-    callback: (interaction: (SelectMenuInteraction | RoleSelectMenuInteraction | UserSelectMenuInteraction | ChannelSelectMenuInteraction | MentionableSelectMenuInteraction)) => void,
-    timeout: number,
-    componentType: ComponentType
+    response: InteractionResponse | any,
+    callback: (
+      interaction:
+        | SelectMenuInteraction
+        | RoleSelectMenuInteraction
+        | UserSelectMenuInteraction
+        | ChannelSelectMenuInteraction
+        | MentionableSelectMenuInteraction
+        | any
+    ) => void,
+    componentType: ComponentType,
+    timeout: number
+    filter?: (
+      interaction:
+        | SelectMenuInteraction
+        | RoleSelectMenuInteraction
+        | UserSelectMenuInteraction
+        | ChannelSelectMenuInteraction
+        | MentionableSelectMenuInteraction
+        | any
+    ) => boolean,
   ) {
     if (response) {
       const collector = response.createMessageComponentCollector({
         time: timeout,
         componentType: componentType,
-        filter: (interaction: (SelectMenuInteraction | RoleSelectMenuInteraction | UserSelectMenuInteraction | ChannelSelectMenuInteraction | MentionableSelectMenuInteraction)) => (interaction.isStringSelectMenu() ||
-            interaction.isUserSelectMenu() ||
-            interaction.isRoleSelectMenu() ||
-            interaction.isChannelSelectMenu() ||
-            interaction.isMentionableSelectMenu()),
+        filter: filter,
       });
-
       if (collector) {
         collector.on("collect", callback);
       }

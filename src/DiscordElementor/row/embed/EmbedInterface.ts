@@ -15,7 +15,7 @@ export interface EmbedFooter {
   /** Nome do rodapé */
   name: string;
   /** URL do ícone do rodapé */
-  iconURL: string;
+  iconURL?: string;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface EmbedAuthor {
   /** Nome do autor */
   name: string;
   /** URL do ícone do autor */
-  iconURL: string;
+  iconURL?: string;
 }
 
 /**
@@ -33,9 +33,9 @@ export interface EmbedAuthor {
  */
 export interface EmbedData {
   /** Cor do embed */
-  color: string; // Pode ser um número ou string hexadecimal
+  color?: string; // Pode ser um número ou string hexadecimal
   /** Título do embed */
-  title: string;
+  title?: string;
   /** URL do embed */
   url?: string; // Opcional, pois pode não ser sempre fornecido
   /** Autor do embed */

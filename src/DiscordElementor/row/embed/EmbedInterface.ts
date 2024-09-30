@@ -1,4 +1,5 @@
-/**
+ import { ColorResolvable } from "discord.js";
+ /**
  * Interface para os campos de um embed.
  */
 export interface EmbedField {
@@ -32,6 +33,8 @@ export interface EmbedAuthor {
  * Interface para os dados de um embed.
  */
 export interface EmbedData {
+  /** Cor do embed */
+  color?: ColorResolvable | null;
   /** Título do embed */
   title?: string;
   /** URL do embed */

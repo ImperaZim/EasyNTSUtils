@@ -40,9 +40,9 @@ if (fs.existsSync(filePath)) {
       "DiscordModalComponent": ["DiscordElementor/modal/component"]
     }
   };
-  console.log('Arquivo tsconfig atualizado!');
+  console.log('Arquivo tsconfig.json atualizado!');
 }else{
-  console.log('Arquivo tsconfig não encontrado!');
+  console.log('Arquivo tsconfig.json não encontrado!');
 }
 EOF
 

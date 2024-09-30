@@ -1,7 +1,6 @@
-import { 
+import {
   ChatInputCommandInteraction,
   ModalSubmitInteraction,
-  InteractionCollector,
   CacheType
 } from "discord.js";
 
@@ -15,14 +14,19 @@ export class ModalCollector {
     callback: (interaction: ModalSubmitInteraction) => void
   ) {
     if (response && response.awaitModalSubmit) {
-      const collector: Promise<ModalSubmitInteraction<CacheType>> = response.awaitModalSubmit({
+      // Chama awaitModalSubmit e lida com a promessa
+      response.awaitModalSubmit({
         time: timeout,
         filter: (interaction: ModalSubmitInteraction) => interaction.isModalSubmit(),
+      }).then(interaction => {
+        // Chama o callback quando a interação é coletada
+        if (interaction) {
+          callback(interaction);
+        }
+      }).catch(error => {
+        // Lide com o erro aqui, se necessário
+        console.error('Erro ao coletar a interação de modal:', error);
       });
-
-      if (collector) {
-        collector.on("collect", callback); // Callback chamado quando uma interação é coletada
-      }
     }
   }
 }

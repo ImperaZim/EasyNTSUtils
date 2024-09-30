@@ -2,7 +2,7 @@ import {
   ComponentType, 
   ButtonInteraction, 
   InteractionResponse, 
-  MessageComponentInteractionCollector 
+  InteractionCollector 
 } from "discord.js";
 
 /**
@@ -11,11 +11,12 @@ import {
 export class ButtonCollector {
   constructor(
     response: InteractionResponse,
-    callback: (interaction: ButtonInteraction) => void
+    callback: (interaction: ButtonInteraction) => void,
+    timeout: number
   ) {
     if (response) {
-      const collector: MessageComponentInteractionCollector<ButtonInteraction> = response.createMessageComponentCollector({
-        time: null,
+      const collector: InteractionCollector<ButtonInteraction> = response.createMessageComponentCollector({
+        time: timeout,
         componentType: ComponentType.Button,
         filter: (interaction: ButtonInteraction) => interaction.isButton(),
       });

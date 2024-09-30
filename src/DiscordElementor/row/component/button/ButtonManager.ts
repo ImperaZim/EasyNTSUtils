@@ -63,7 +63,8 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
 export function buildButtons(buttonsData: Buttons[], row: string, tags: Tags): ButtonBuilder[] {
   const buttons: ButtonBuilder[] = [];
   for (const buttonName in Object.keys(buttonsData)) {
-    buttons.push(buildButton(buttonsData[buttonName], row, buttonName, tags));
+    const buttonData: ButtonTypes = buttonsData[buttonName];
+    buttons.push(buildButton(buttonData, row, buttonName, tags));
   }
   return buttons;
 }

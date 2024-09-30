@@ -1,13 +1,11 @@
 import {
-  CacheType,
   ComponentType,
   InteractionResponse,
-  StringSelectMenuInteraction,
-  UserSelectMenuInteraction,
+  SelectMenuInteraction,
   RoleSelectMenuInteraction,
+  UserSelectMenuInteraction,
   ChannelSelectMenuInteraction,
   MentionableSelectMenuInteraction,
-  InteractionCollector,
 } from "discord.js";
 
 /**
@@ -16,33 +14,19 @@ import {
 export class SelectMenuCollector {
   constructor(
     response: InteractionResponse,
-    callback: (
-      interaction:
-        | StringSelectMenuInteraction
-        | UserSelectMenuInteraction
-        | RoleSelectMenuInteraction
-        | ChannelSelectMenuInteraction
-        | MentionableSelectMenuInteraction
-    ) => void,
-    timeout: number
+    callback: (interaction: (SelectMenuInteraction | RoleSelectMenuInteraction | UserSelectMenuInteraction | ChannelSelectMenuInteraction | MentionableSelectMenuInteraction)) => void,
+    timeout: number,
+    componentType: ComponentType
   ) {
     if (response) {
-      const collector: InteractionCollector<StringSelectMenuInteraction | UserSelectMenuInteraction | RoleSelectMenuInteraction | MentionableSelectMenuInteraction | ChannelSelectMenuInteraction> = response.createMessageComponentCollector({
+      const collector = response.createMessageComponentCollector({
         time: timeout,
-        componentType: ComponentType.StringSelect | ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect | ComponentType.MentionableSelect,
-        filter: (
-          interaction:
-            | StringSelectMenuInteraction
-            | UserSelectMenuInteraction
-            | RoleSelectMenuInteraction
-            | ChannelSelectMenuInteraction
-            | MentionableSelectMenuInteraction
-        ) => {
-          return interaction.isStringSelectMenu() ||
+        componentType: componentType,
+        filter: (interaction: (SelectMenuInteraction | RoleSelectMenuInteraction | UserSelectMenuInteraction | ChannelSelectMenuInteraction | MentionableSelectMenuInteraction)) => (interaction.isStringSelectMenu() ||
             interaction.isUserSelectMenu() ||
             interaction.isRoleSelectMenu() ||
-            interaction.isChannelSelectMenu() || interaction.isMentionableSelectMenu();
-        },
+            interaction.isChannelSelectMenu() ||
+            interaction.isMentionableSelectMenu()),
       });
 
       if (collector) {

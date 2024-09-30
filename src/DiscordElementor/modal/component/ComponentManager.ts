@@ -15,7 +15,7 @@ import { ActionRowBuilder, TextInputBuilder } from 'discord.js';
  * @returns Um array de objetos ActionRowBuilder configurados com campos de entrada.
  * @throws Erros se o modal não for encontrado ou se não houver componentes.
  */
-export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder[] {
+export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder<TextInputBuilder>[] {
   const builder: Builder = BuilderRegistry.builder;
 
   if (!builder.modals) {
@@ -26,7 +26,7 @@ export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder[
     throw new Error(`Modal ${modal} não encontrada!`);
   }
 
-  const actionRows: ActionRowBuilder[] = [];
+  const actionRows: ActionRowBuilder<TextInputBuilder>[] = [];
 
   // Obter inputs e adicionar a um ActionRowBuilder
   const inputs = getInputs(modal, tags);

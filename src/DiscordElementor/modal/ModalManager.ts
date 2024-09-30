@@ -4,7 +4,7 @@ import {
   getModalComponents,
   BuilderRegistry, Builder
 } from "../../";
-import { ModalBuilder, ActionRowBuilder } from 'discord.js';
+import { ModalBuilder, ActionRowBuilder, TextInputBuilder } from 'discord.js';
 
 /**
  * Obtém todos os dados de um modal específico e retorna um ModalBuilder.
@@ -26,7 +26,7 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
   }
 
   const modalData: Modal = builder.modals[modal];
-  const components: ActionRowBuilder[] = getModalComponents(modal, tags);
+  const components: ActionRowBuilder<TextInputBuilder>[] = getModalComponents(modal, tags) as ActionRowBuilder<TextInputBuilder>[];
 
   const modalBuilder = new ModalBuilder();
   modalBuilder.setCustomId(modal);
@@ -35,6 +35,7 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
 
   return modalBuilder;
 }
+
 
 /**
  * Registra um novo modal.

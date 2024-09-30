@@ -6,7 +6,9 @@ git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git
 mkdir -p @imperazim
 mv EasyNTSUtils/src/* @imperazim/
 
-rm -rf EasyNTSUtils
+rm -rf EasyNTSUtijs
+
+npm i colorette fs --silent
 
 cat << 'EOF' > updateTsConfig.js
 const fs = require('fs');
@@ -48,8 +50,6 @@ EOF
 
 node updateTsConfig.js
 rm updateTsConfig.js
-
-npm i colorette --silent
 
 rm -rf ./installer.sh 
 

@@ -5,7 +5,7 @@ import {
   BuilderRegistry, Builder,
   getSelects, DiscordSelectTypes
 } from "../..";
-import { ActionRowBuilder, ButtonBuilder } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, MessageActionRowComponentBuilder } from 'discord.js';
 
 /**
  * Obtém todos os componentes de uma linha específica.
@@ -14,7 +14,7 @@ import { ActionRowBuilder, ButtonBuilder } from 'discord.js';
  * @returns Um array de objetos ActionRowBuilder configurados.
  * @throws Erros se a linha não for encontrada ou se não houver componentes.
  */
-export function getComponents(row: string, tags: Tags): ActionRowBuilder[] {
+export function getComponents(row: string, tags: Tags): ActionRowBuilder<MessageActionRowComponentBuilder>[] {
   const builder: Builder = BuilderRegistry.builder;
 
   if (!builder.rows) {
@@ -31,9 +31,9 @@ export function getComponents(row: string, tags: Tags): ActionRowBuilder[] {
     throw new Error(`Não foram encontrados componentes na lista ${row}!`);
   }
 
-  const rows: ActionRowBuilder[] = [];
-  rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags)));
-  rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags)));
+  const rows: ActionRowBuilder<MessageActionRowComponentBuilder>[] = [];
+  rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags) as MessageActionRowComponentBuilder[]));
+  rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags) as MessageActionRowComponentBuilder[]));
 
   return rows; // Retorna todos os ActionRowBuilder configurados
 }

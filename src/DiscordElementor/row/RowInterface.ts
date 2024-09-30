@@ -1,5 +1,5 @@
 import { Embeds, Components } from "../";
-import { EmbedBuilder, ActionRowBuilder } from "discord.js";
+import { EmbedBuilder, ActionRowBuilder, MessageActionRowComponentBuilder } from "discord.js";
 
 /**
  * Interface para uma única linha que contém embeds e componentes.
@@ -17,7 +17,7 @@ export interface DiscordRows {
   /** Um objeto que contém embeds. */
   embeds?: EmbedBuilder[];
   /** Um objeto que contém componentes. */
-  components?: ActionRowBuilder[];
+  components?: ActionRowBuilder<MessageActionRowComponentBuilder>[];
 }
 
 /**

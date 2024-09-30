@@ -3,11 +3,11 @@ export * from './Text';
 export * from './modal';
 export * from './collector';
 
-import { Rows } from './row/';
+import { Rows, Modals } from './';
 
 export interface Builder {
   rows?: Rows;
-  modals?: any; // depois adicionar os types de Modal[]
+  modals?: Modals; // depois adicionar os types de Modal[]
 }
 
 export class BuilderRegistry {

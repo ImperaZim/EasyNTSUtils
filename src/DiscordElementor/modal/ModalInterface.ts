@@ -10,3 +10,7 @@ export interface Modal {
   components?: ModalComponents;
   onSubmit?: onSubmit;
 }
+
+export interface Modals {
+  [key: string]: Modal; // Cada linha é identificada por uma chave do tipo string
+}

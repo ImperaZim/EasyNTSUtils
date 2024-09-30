@@ -1,6 +1,6 @@
 import {
   Tags,
-  Modal,
+  Modal, Modals,
   getModalComponents,
   BuilderRegistry, Builder
 } from "../../";

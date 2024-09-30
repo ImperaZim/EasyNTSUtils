@@ -3,10 +3,8 @@ mkdir -p ./ENTSU/
 
 cd ./ENTSU/
 
-rm -rf EmbedUtils/ JsonUtils/ ConsoleUtils/ MySQLUtils/ index.ts
-
 git clone 'https://github.com/ImperaZim/EasyNTSUtils.git' 
-mv ./EasyNTSUtils/src/* ../
+mv ./EasyNTSUtils/src/* ./
 
 cd ..
 rm -rf EasyNTSUtils

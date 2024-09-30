@@ -1,6 +1,6 @@
 import { ButtonStyle } from 'discord.js';
 
-export interface onInterfaction {
+interface onInterfaction {
   elementType: "row" | "modal",
   elementIdentifier: string,
 }

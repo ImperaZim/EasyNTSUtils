@@ -1,12 +1,12 @@
-import { Components } from './component/ComponentInterface';
+import { ModalComponents } from './component/ComponentInterface';
 
-export interface onSubmit {
+interface onSubmit {
   elementType: "row" | "modal",
   elementIdentifier: string,
 }
 
 export interface Modal {
   title: string;
-  components?: Components;
+  components?: ModalComponents;
   onSubmit?: onSubmit;
 }

@@ -6,7 +6,7 @@ import {
   RoleSelectMenuBuilder
 } from 'discord.js';
 
-export interface onSubmit {
+interface onSubmit {
   elementType: "row" | "modal",
   elementIdentifier: string,
 }

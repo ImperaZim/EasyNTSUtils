@@ -1,6 +1,6 @@
 import {
   Tags, getProcessedTags,
-  Modal, Components, Input,
+  Modal, ModalComponents, Input,
   BuilderRegistry, Builder,
 } from '../../../';
 import { TextInputBuilder } from "discord.js";
@@ -71,7 +71,7 @@ export function getInput(modal: string, name: string, tags: Tags): TextInputBuil
     throw new Error(`Não foram encontrados componentes na modal ${modal}!`);
   }
 
-  const componentsData: Components = modalData.components;
+  const componentsData: ModalComponents = modalData.components;
 
   if (!componentsData.inputs) {
     throw new Error(`Não foram encontrados inputs nos componentes da modal ${modal}!`);
@@ -110,7 +110,7 @@ export function getInputs(modal: string, tags: Tags): TextInputBuilder[] {
     throw new Error(`Não foram encontrados componentes na modal ${modal}!`);
   }
 
-  const componentsData: Components = modalData.components;
+  const componentsData: ModalComponents = modalData.components;
 
   if (!componentsData.inputs) {
     throw new Error(`Não foram encontrados inputs nos componentes da modal ${modal}!`);

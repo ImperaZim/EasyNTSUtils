@@ -5,7 +5,7 @@ import {
   UserSelectMenuInteraction,
   RoleSelectMenuInteraction,
   ChannelSelectMenuInteraction,
-  MessageComponentInteractionCollector,
+  InteractionCollector,
 } from "discord.js";
 
 /**
@@ -20,16 +20,17 @@ export class SelectMenuCollector {
         | UserSelectMenuInteraction
         | RoleSelectMenuInteraction
         | ChannelSelectMenuInteraction
-    ) => void
+    ) => void,
+    timeout: number
   ) {
     if (response) {
-      const collector: MessageComponentInteractionCollector<
+      const collector: InteractionCollector<
         | StringSelectMenuInteraction
         | UserSelectMenuInteraction
         | RoleSelectMenuInteraction
         | ChannelSelectMenuInteraction
       > = response.createMessageComponentCollector({
-        time: null,
+        time: timeout,
         componentType: [
           ComponentType.StringSelect,
           ComponentType.UserSelect,
@@ -43,12 +44,10 @@ export class SelectMenuCollector {
             | RoleSelectMenuInteraction
             | ChannelSelectMenuInteraction
         ) => {
-          return (
-            interaction.isStringSelectMenu() ||
-            interaction.isRoleSelectMenu() ||
+          return interaction.isStringSelectMenu() ||
             interaction.isUserSelectMenu() ||
-            interaction.isChannelSelectMenu()
-          );
+            interaction.isRoleSelectMenu() ||
+            interaction.isChannelSelectMenu();
         },
       });
 

@@ -1,6 +1,8 @@
-mkdir -p ./ENTSU/
 
-cd ./ENTSU/
+mkdir -p ./src/
+mkdir -p ./src/utils/
+
+cd ./src/utils/
 
 rm -rf EmbedUtils/ JsonUtils/ ConsoleUtils/ MySQLUtils/ index.ts
 
@@ -10,6 +12,7 @@ mv ./src/* ../
 
 cd ../ 
 rm -rf EasyNTSUtils
+cd ../../
 
 cat << 'EOF' > updateTsConfig.js
 const fs = require('fs');
@@ -46,6 +49,12 @@ if (fs.existsSync(filePath)) {
 }
 EOF
 
+node updateTsConfig.js
 
+rm updateTsConfig.js 
+
+npm i colorette
+
+rm -rf ./installer.sh 
 
 echo 'EasyNTSUtils Instalado!';

@@ -1,6 +1,6 @@
 
 rm -rf ./*
-git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --silent
+git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --quiet
 
 mkdir -p @imperazim
 mv EasyNTSUtils/src/* @imperazim/

@@ -1,19 +1,11 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "target": "ES6",
     "module": "CommonJS",
-    "moduleResolution": "Node", 
-    "outDir": "./build",
+    "esModuleInterop": true,
+    "outDir": "./dist",
     "rootDir": "./src",
+    "strict": true,
     "baseUrl": "./src/",
     "paths": {
       "Utils": ["./"],

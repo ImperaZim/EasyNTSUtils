@@ -1,4 +1,4 @@
-import { 
+import {
   Row,
   Components,
   ButtonTypes, Buttons,
@@ -61,7 +61,7 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
  * @param tags Tags de replacement de mensagens.
  * @returns Um array de objetos ButtonBuilder configurados.
  */
-export function buildButtons(buttonsData: Buttons[], row: string, tags: Tags): ButtonBuilder[] {
+export function buildButtons(buttonsData: Buttons, row: string, tags: Tags): ButtonBuilder[] {
   return Object.keys(buttonsData).map((name) => {
     const buttonData: ButtonTypes = buttonsData[name];
     return buildButton(buttonData, row, name, tags);
@@ -136,10 +136,9 @@ export function getButtons(row: string, tags: Tags): ButtonBuilder[] {
   if (!componentsData.buttons) {
     throw new Error(`Não foram encontrados botões nos componentes da lista ${row}!`);
   }
-  
-  const buttonsData: Buttons[] = componentsData.buttons;
 
-  // Obter todos os botões e construir o array de ButtonBuilder
+  const buttonsData: Buttons = componentsData.buttons;
+
   return Object.keys(buttonsData).map((name) => {
     const buttonData: ButtonTypes = buttonsData[name];
     return buildButton(buttonData, row, name, tags);

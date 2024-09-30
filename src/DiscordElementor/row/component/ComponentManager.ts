@@ -35,5 +35,5 @@ export function getComponents(row: string, tags: Tags): ActionRowBuilder[] {
   rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags)));
   rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags)));
 
-  return rows; // Retorna todos os ActionRowBuilder configurados
+  return rows.map(component => component.toJSON()); // Retorna todos os ActionRowBuilder configurados
 }

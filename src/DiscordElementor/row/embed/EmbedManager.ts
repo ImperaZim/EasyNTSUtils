@@ -111,15 +111,11 @@ export function getEmbed(row: string, name: string, tags: Tags): EmbedBuilder {
 
   const rowData: Row = builder.rows[row];
 
-  if (!rowData.components) {
-    throw new Error(`Não foram encontrados componentes na lista ${row}!`);
-  }
-
-  if (!rowData.components.embeds) {
+  if (!rowData.embeds) {
     throw new Error(`Não foram encontrados embeds nos componentes da lista ${row}!`);
   }
 
-  const embeds: Embeds = rowData.components.embeds;
+  const embeds: Embeds = rowData.embeds;
 
   if (!embeds[name]) {
     throw new Error(`O embed ${name} não existe nos componentes da lista ${row}!`);

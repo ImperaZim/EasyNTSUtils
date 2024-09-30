@@ -1,6 +1,6 @@
 import {
   Tags,
-  Rows, Row,
+  DiscordRows, Rows, Row,
   getEmbeds, getComponents,
   BuilderRegistry, Builder,
 } from "../";
@@ -12,7 +12,7 @@ import {
  * @returns Um array de objetos DiscordRows configurados.
  * @throws Erros se a linha não for encontrada ou se não houver ActionRows.
  */
-export function getRow(row: string, tags: Tags) {
+export function getRow(row: string, tags: Tags): DiscordRows {
   const builder: Builder = BuilderRegistry.builder;
 
   if (!builder.rows) {
@@ -25,7 +25,7 @@ export function getRow(row: string, tags: Tags) {
 
   return {
     embeds: getEmbeds(row, tags),
-    components: getComponents(row, tags).map(component => component.toJSON())
+    components: getComponents(row, tags)
   }
 
 }

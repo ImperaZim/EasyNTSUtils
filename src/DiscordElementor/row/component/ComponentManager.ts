@@ -1,6 +1,7 @@
 import {
   Row,
   Tags,
+  Components,
   getButtons,
   BuilderRegistry, Builder,
   getSelects, DiscordSelectTypes
@@ -30,10 +31,17 @@ export function getComponents(row: string, tags: Tags): ActionRowBuilder<Message
   if (!rowData.components) {
     throw new Error(`Não foram encontrados componentes na lista ${row}!`);
   }
-
+  
   const rows: ActionRowBuilder<MessageActionRowComponentBuilder>[] = [];
+
+  const componentsData: Components = rowData.components;
+  
+  if (componentsData.buttons && componentsData.buttons.length >= 1) {
   rows.push(new ActionRowBuilder<ButtonBuilder>().addComponents(getButtons(row, tags) as ButtonBuilder[]));
+  }
+  if (componentsData.selects && componentsData.selects.length >= 1) {
   rows.push(new ActionRowBuilder<DiscordSelectTypes>().addComponents(getSelects(row, tags) as DiscordSelectTypes[]));
+  }
 
   return rows; // Retorna todos os ActionRowBuilder configurados
 }

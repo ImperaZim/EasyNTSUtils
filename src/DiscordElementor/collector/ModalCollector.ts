@@ -1,7 +1,6 @@
 import {
   ChatInputCommandInteraction,
-  ModalSubmitInteraction,
-  CacheType
+  ModalSubmitInteraction
 } from "discord.js";
 
 /**

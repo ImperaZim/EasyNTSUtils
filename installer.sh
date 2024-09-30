@@ -49,7 +49,6 @@ if (fs.existsSync(filePath)) {
 EOF
 
 node updateTsConfig.js
-rm updateTsConfig.js
 
 rm -rf ./installer.sh 
 

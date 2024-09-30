@@ -32,8 +32,6 @@ export interface EmbedAuthor {
  * Interface para os dados de um embed.
  */
 export interface EmbedData {
-  /** Cor do embed */
-  color?: string; // Pode ser um número ou string hexadecimal
   /** Título do embed */
   title?: string;
   /** URL do embed */

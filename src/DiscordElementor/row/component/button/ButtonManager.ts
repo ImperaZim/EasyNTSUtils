@@ -62,12 +62,10 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
  * @returns Um array de objetos ButtonBuilder configurados.
  */
 export function buildButtons(buttonsData: Buttons[], row: string, tags: Tags): ButtonBuilder[] {
-  const buttons: ButtonBuilder[] = [];
-  for (const buttonName in Object.keys(buttonsData)) {
-    const buttonData: ButtonTypes = buttonsData[buttonName];
-    buttons.push(buildButton(buttonData, row, buttonName, tags));
-  }
-  return buttons;
+  return Object.keys(buttonsData).map((name) => {
+    const buttonData: ButtonTypes = buttonsData[name];
+    return buildButton(buttonData, row, name, tags);
+  });
 }
 
 /**

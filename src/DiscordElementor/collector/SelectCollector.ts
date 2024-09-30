@@ -21,7 +21,7 @@ export class SelectCollector {
         | any
     ) => void,
     componentType: ComponentType,
-    timeout: number
+    timeout: number,
     filter?: (
       interaction:
         | SelectMenuInteraction
@@ -30,7 +30,7 @@ export class SelectCollector {
         | ChannelSelectMenuInteraction
         | MentionableSelectMenuInteraction
         | any
-    ) => boolean,
+    ) => boolean
   ) {
     if (response) {
       const collector = response.createMessageComponentCollector({

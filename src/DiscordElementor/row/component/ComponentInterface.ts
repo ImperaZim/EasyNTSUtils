@@ -6,7 +6,7 @@ import { Selects } from './select/SelectInterface';   // Importando a interface 
  */
 export interface Components {
   /** Um array de botões. */
-  buttons: Buttons[];   // Retorna um array de botões
+  buttons: Buttons;   // Retorna um array de botões
   /** Um array de selects. */
-  selects: Selects[];   // Retorna um array de selects
+  selects: Selects;   // Retorna um array de selects
 }

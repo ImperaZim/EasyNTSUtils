@@ -6,6 +6,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
+    "noImplicitAny": true,
     "baseUrl": "./",
     "paths": {
       "Utils": ["./@imperazim/"],
@@ -22,12 +23,13 @@
       "DiscordModal": ["./@imperazim/DiscordElementor/modal"],
       "DiscordModalComponent": ["./@imperazim/DiscordElementor/modal/component"],
       "DiscordModalInput": ["./@imperazim/DiscordElementor/modal/component/input"],
-      
-      
-      
-      "DiscordCollector": ["./@imperazim/DiscordElementor/collector"],
+      "DiscordCollector": ["./@imperazim/DiscordElementor/collector"]
     }
   },
-  "include": ["src"],
+  "include": [
+    "./src",
+    "./**/*.ts",
+    "./@imperazim/**/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

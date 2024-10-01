@@ -8,11 +8,7 @@ loading() {
     local spin='/-\|'
     local i=0
 
-    while kill -0 $pid 2>/dev/null; do
-        echo -ne "\r[${spin:i++ % 4}] $message"
-        sleep $delay
-    done
-    echo -ne "\r   \r" # Limpa a linha
+    echo -ne "\r$message"
 }
 
 # Remove o diretório antigo @imperazim

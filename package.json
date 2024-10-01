@@ -4,7 +4,7 @@
   "type": "module",
   "main": "@imperazim/index.ts",
   "scripts": {
-    "dev": "tsx dev.ts",
+    "dev": "tsx src/dev.ts",
     "start": "tsx @imperazim/index.ts"
   },
   "devDependencies": {

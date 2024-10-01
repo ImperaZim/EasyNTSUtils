@@ -27,8 +27,8 @@
     }
   },
   "include": [
-    "./**/*.ts",
-    "./@imperazim/**/*.d.ts"
+    "@imperazim/**/*.ts",
+    "@imperazim/**/*.d.ts"
   ],
   "exclude": [
     "dev.ts",

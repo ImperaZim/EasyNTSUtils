@@ -9,9 +9,8 @@
     "noImplicitAny": true,
     "baseUrl": "./",
     "paths": {
-      "Utils": ["./@imperazim/"],
-      "MySQL": ["./@imperazim/MySQLUtils"],
-
+      "@imperazim": ["./@imperazim/"],
+      "MySQL": ["./@imperazim/MySQL"],
       "Json": ["./@imperazim/Json"],
       "Console": ["./@imperazim/Console"],
       "DiscordElementor": ["./@imperazim/DiscordElementor"],

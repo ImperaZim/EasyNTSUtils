@@ -1,12 +1,12 @@
 
-// #console
-export * from "./Console";
-
 // #Json
 export * from "./Json";
 
 // #mysql
-export * from "./MySQLUtils/MySQL";
+export * from "./MySQL";
+
+// #console
+export * from "./Console";
 
 // DiscordElementor 
 export * from "./DiscordElementor";

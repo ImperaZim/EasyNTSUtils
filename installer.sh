@@ -13,7 +13,7 @@ echo -e "\e[1;33m[imperazim]:\e[0m \e[1;37mCriando modulo @imperazim!"
 mkdir -p @imperazim 
 
 echo -e "\e[1;33m[imperazim]:\e[0m \e[1;37mInstalando sub-modulos em @imperazim!"
-mv EasyNTSUtils/src/* @imperazim/
+mv EasyNTSUtils/@imperazim/* @imperazim/
 
 echo -e "\e[1;33m[imperazim]:\e[0m \e[1;37mCriando compilador tsconfig!"
 mv EasyNTSUtils/tsconfig.json ./tsconfig.json

@@ -7,7 +7,7 @@ import { Rows, Modals } from './';
 
 export interface Builder {
   rows?: Rows;
-  modals?: Modals; // depois adicionar os types de Modal[]
+  modals?: Modals;
 }
 
 export class BuilderRegistry {

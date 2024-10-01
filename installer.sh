@@ -4,7 +4,7 @@ rm -rf @imperazim
 
 # Clona o repositório com a branch main
 echo -e "\e[1;33m[imperazim]\e[0m \e[1;37mBaixando sub-modulos:"
-echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mDiscordElmodulos Instalado"
+echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mDiscordElementor Instalado"
 echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mJsonUtils Instalado"
 echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mConsoleUtils Instalado"
 echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mMySQLUtils Instalado"

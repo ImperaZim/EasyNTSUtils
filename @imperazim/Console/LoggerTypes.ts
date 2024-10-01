@@ -1,4 +1,4 @@
-import { ForegroundColor } from "./Color";
+import { ForegroundColor } from "./";
 
 /**
  * Represents the available log types.

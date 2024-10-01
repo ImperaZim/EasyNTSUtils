@@ -10,10 +10,10 @@
     "baseUrl": "./",
     "paths": {
       "Utils": ["./@imperazim/"],
-      "Console": ["./@imperazim/ConsoleUtils"],
       "Json": ["./@imperazim/Json"],
       "MySQL": ["./@imperazim/MySQLUtils"],
 
+      "Console": ["./@imperazim/Console"],
       "DiscordElementor": ["./@imperazim/DiscordElementor"],
       "DiscordRow": ["./@imperazim/DiscordElementor/row"],
       "DiscordRowEmbed": ["./@imperazim/DiscordElementor/row/embed"],

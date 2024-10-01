@@ -12,15 +12,20 @@
       "Console": ["./@imperazim/ConsoleUtils"],
       "Json": ["./@imperazim/Json"],
       "MySQL": ["./@imperazim/MySQLUtils"],
+      
       "DiscordElementor": ["./@imperazim/DiscordElementor"],
-      "DiscordCollector": ["./@imperazim/DiscordElementor/collector"],
       "DiscordRow": ["./@imperazim/DiscordElementor/row"],
       "DiscordRowEmbed": ["./@imperazim/DiscordElementor/row/embed"],
+      "DiscordRowComponent": ["./@imperazim/DiscordElementor/row/component"],
       "DiscordRowButton": ["./@imperazim/DiscordElementor/row/component/button"],
       "DiscordRowSelect": ["./@imperazim/DiscordElementor/row/component/select"],
       "DiscordModal": ["./@imperazim/DiscordElementor/modal"],
+      "DiscordModalComponent": ["./@imperazim/DiscordElementor/modal/component"],
       "DiscordModalInput": ["./@imperazim/DiscordElementor/modal/component/input"],
-      "DiscordModalComponent": ["./@imperazim/DiscordElementor/modal/component"]
+      
+      
+      
+      "DiscordCollector": ["./@imperazim/DiscordElementor/collector"],
     }
   },
   "include": ["src"],

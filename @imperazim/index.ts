@@ -1,8 +1,6 @@
 
 // #console
-export * from "./ConsoleUtils/Color";
-export * from "./ConsoleUtils/Logger";
-export * from "./ConsoleUtils/LoggerTypes";
+export * from "./Console";
 
 // #Json
 export * from "./Json";

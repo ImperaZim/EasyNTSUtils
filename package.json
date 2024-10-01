@@ -2,10 +2,10 @@
   "name": "easyntsutils",
   "version": "1.0.1",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "@imperazim/index.ts",
   "scripts": {
     "dev": "tsx dev.ts",
-    "start": "tsx src/index.ts"
+    "start": "tsx @imperazim/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.6.1",

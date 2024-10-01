@@ -4,8 +4,8 @@ export * from "./ConsoleUtils/Color";
 export * from "./ConsoleUtils/Logger";
 export * from "./ConsoleUtils/LoggerTypes";
 
-// #tson
-export * from "./JsonUtils/JsonFile";
+// #Json
+export * from "./Json";
 
 // #mysql
 export * from "./MySQLUtils/MySQL";

@@ -8,7 +8,7 @@ echo "- DiscordElmodulos"
 echo "- JsonUtils"
 echo "- ConsoleUtils"
 echo "- MySQLUtils"
-git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git
+git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --quiet
 
 # Cria o diretório @imperazim e move os arquivos para lá
 echo 'Criando modulo @imperazim!'

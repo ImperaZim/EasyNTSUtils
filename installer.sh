@@ -9,7 +9,7 @@ echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mJsonUtils Instalado"
 echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mConsoleUtils Instalado"
 echo -e "\e[1;33m[imperazim/utils]\e[0m \e[1;37mMySQLUtils Instalado"
 git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git --quiet
-
+ 
 # Cria o diretório @imperazim e move os arquivos para lá
 echo -e "\e[1;33m[imperazim]\e[0m \e[1;37mCriando modulo @imperazim!"
 mkdir -p @imperazim 

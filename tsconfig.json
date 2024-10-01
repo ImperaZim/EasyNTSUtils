@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./@imperazim",
     "strict": true,
     "noImplicitAny": true,
     "baseUrl": "./",
@@ -13,7 +13,7 @@
       "Console": ["./@imperazim/ConsoleUtils"],
       "Json": ["./@imperazim/Json"],
       "MySQL": ["./@imperazim/MySQLUtils"],
-      
+
       "DiscordElementor": ["./@imperazim/DiscordElementor"],
       "DiscordRow": ["./@imperazim/DiscordElementor/row"],
       "DiscordRowEmbed": ["./@imperazim/DiscordElementor/row/embed"],
@@ -27,9 +27,11 @@
     }
   },
   "include": [
-    "./src",
     "./**/*.ts",
     "./@imperazim/**/*.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "dev.ts",
+    "node_modules"
+  ]
 }

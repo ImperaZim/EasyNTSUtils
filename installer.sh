@@ -1,28 +1,36 @@
-#!/bin/bash
-
 # Remove o diretório antigo @imperazim
-rm -rf @imperazim &
+echo 'Limpandos versões anterioes!';
+rm -rf @imperazim
 
-# Clona o repositório com a branch main de forma silenciosa
-git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git > /dev/null 2>&1 &
-echo "Baixando Dados"
+# Clona o repositório com a branch main
+echo 'Baixando sub-modulos:'
+echo "- DiscordElmodulos"
+echo "- JsonUtils"
+echo "- ConsoleUtils"
+echo "- MySQLUtils"
+git clone -b main https://github.com/ImperaZim/EasyNTSUtils.git
 
 # Cria o diretório @imperazim e move os arquivos para lá
-mkdir -p @imperazim
+echo 'Criando modulo @imperazim!'
+mkdir -p @imperazim 
+
+echo 'Instalando sub-modulos em @imperazim!'
 mv EasyNTSUtils/src/* @imperazim/
+
+echo 'Criando compilador tsconfig!'
 mv EasyNTSUtils/tsconfig.json ./tsconfig.json
-echo "Compilando Dados"
 
 # Remove o diretório EasyNTSUtils
-rm -rf EasyNTSUtils &
-echo "Removendo vestigios"
+echo 'Removendo vestigios!'
+rm -rf EasyNTSUtils
 
-# Instala pacotes necessários de forma silenciosa
-npm i colorette fs --silent &
-echo "Instalando Pacotes"
+# Instala pacotes necessários
+echo 'Instalando pacotes necessários!'
+npm i colorette fs --silent
 
 # Remove o arquivo installer.sh se existir
+echo 'Removendo instalador!'
 rm -rf ./installer.sh
 
 # Mensagem de sucesso
-echo -e "\nEasyNTSUtils Instalado!"
+echo 'EasyNTSUtils Instalado!';

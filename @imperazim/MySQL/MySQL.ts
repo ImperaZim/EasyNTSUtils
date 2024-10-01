@@ -7,7 +7,7 @@ export interface MysqlBase {
   database?: string;
 }
 
-export class MySQL {
+export class MysqlConnection {
   private login: Pool;
 
   constructor(access: MysqlBase) {

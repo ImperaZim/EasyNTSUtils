@@ -68,7 +68,7 @@ export const row_1: Row = {
     }
   },
   components: {
-    buttons: {
+     buttons: {
       button_link: {
         type: ButtonStyle.Link,
         data: {

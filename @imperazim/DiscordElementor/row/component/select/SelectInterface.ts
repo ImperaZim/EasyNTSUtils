@@ -45,7 +45,7 @@ export interface SelectStringDataOption {
  */
 export interface SelectStringData extends BaseSelectData {
   /** Opções disponíveis no select */
-  options: SelectStringDataOption[];
+  options: SelectStringDataOption[] | string;
 }
 
 /**

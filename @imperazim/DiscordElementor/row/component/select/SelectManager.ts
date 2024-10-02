@@ -40,8 +40,38 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
         if (data.placeholder) stringSelect.setPlaceholder(getProcessedTags(data.placeholder, tags));
 
         // Verificando e adicionando opções
+        function isValidSelectStringDataOptionArray(options: any): options is SelectStringDataOption[] {
+          return Array.isArray(options) && options.every(option =>
+            typeof option.label === 'string' &&
+            typeof option.description === 'string' &&
+            typeof option.value === 'string'
+          );
+        }
+
         if (data.options) {
-          const options: SelectStringDataOption[] = data.options;
+          let options: SelectStringDataOption[] = [];
+
+          // Verifica se `data.options` é uma string e faz o parsing
+          if (typeof data.options === "string") {
+            try {
+              const parsedOptions = JSON.parse(data.options);
+              if (!isValidSelectStringDataOptionArray(parsedOptions)) {
+                throw new Error("Invalid options format: Parsed options are not a valid SelectStringDataOption[]");
+              }
+              options = parsedOptions;
+            } catch (e) {
+              throw new Error("Error parsing options: " + e.message);
+            }
+          } else if (Array.isArray(data.options)) {
+            if (!isValidSelectStringDataOptionArray(data.options)) {
+              throw new Error("Invalid options format: data.options is not a valid SelectStringDataOption[]");
+            }
+            options = data.options;
+          } else {
+            throw new Error("Invalid options format: data.options must be a string or an array.");
+          }
+
+          // Mapeia as opções processadas e adiciona ao `stringSelect`
           stringSelect.addOptions(
             options.map((optionData) => {
               const option = new StringSelectMenuOptionBuilder();
@@ -51,7 +81,26 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
               return option;
             })
           );
+
+
+          /**
+           * OLD
+           * 
+          if (data.options) {
+            const options: SelectStringDataOption[] = data.options;
+            stringSelect.addOptions(
+              options.map((optionData) => {
+                const option = new StringSelectMenuOptionBuilder();
+                if (optionData.label) option.setLabel(getProcessedTags(optionData.label, tags));
+                if (optionData.description) option.setDescription(getProcessedTags(optionData.description, tags));
+                if (optionData.value) option.setValue(getProcessedTags(optionData.value, tags));
+                return option;
+              })
+            );
+          }
+           */
         }
+
       }
       return stringSelect;
 
@@ -182,9 +231,9 @@ export function getSelects(row: string, tags: Tags): DiscordSelectTypes[] {
   if (!componentsData.selects) {
     throw new Error(`Não foram encontrados selects nos componentes da lista ${row}!`);
   }
-  
+
   const selectsData: Selects = componentsData.selects;
-  
+
   return Object.keys(selectsData).map((name) => {
     const selectData: SelectTypes = selectsData[name];
     return buildSelect(selectData, tags, row, name);

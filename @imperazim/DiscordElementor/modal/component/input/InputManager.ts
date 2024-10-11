@@ -17,7 +17,7 @@ import { TextInputBuilder } from "discord.js";
 export function buildInput(inputData: Input, modal: string, inputName: string, tags: Tags): TextInputBuilder {
   const input = new TextInputBuilder();
 
-  input.setCustomId(getProcessedTags(`${modal}.${inputName}`, tags));
+  input.setCustomId(getProcessedTags(`${inputName}`, tags));
   inputData.style && input.setStyle(inputData.style);
   inputData.required && input.setRequired(inputData.required);
   inputData.minLength && input.setMinLength(inputData.minLength);

@@ -40,7 +40,7 @@ export function buildButton(buttonData: ButtonTypes, row: string, buttonName: st
     if (url) button.setURL(getProcessedTags(url, tags));
   } else {
     button.setStyle(buttonData.type);
-    button.setCustomId(getProcessedTags(`${row}.${buttonName}`, tags));
+    button.setCustomId(getProcessedTags(`${buttonName}`, tags));
 
     const emoji = buttonData.data?.emoji;
     if (emoji) button.setEmoji(getProcessedTags(emoji, tags));

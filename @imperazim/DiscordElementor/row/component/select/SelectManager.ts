@@ -25,7 +25,7 @@ import {
  * @returns Um objeto DiscordSelectTypes configurado.
  */
 export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, name: string): DiscordSelectTypes {
-  const customId = `${row}.${name}`;
+  const customId = `${name}`;
 
   // Verifica o tipo do select e configura as opções corretamente
   switch (selectData.type) {
@@ -82,23 +82,6 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
             })
           );
 
-
-          /**
-           * OLD
-           * 
-          if (data.options) {
-            const options: SelectStringDataOption[] = data.options;
-            stringSelect.addOptions(
-              options.map((optionData) => {
-                const option = new StringSelectMenuOptionBuilder();
-                if (optionData.label) option.setLabel(getProcessedTags(optionData.label, tags));
-                if (optionData.description) option.setDescription(getProcessedTags(optionData.description, tags));
-                if (optionData.value) option.setValue(getProcessedTags(optionData.value, tags));
-                return option;
-              })
-            );
-          }
-           */
         }
 
       }

@@ -30,6 +30,21 @@ export class MysqlConnection {
   }
 
   /**
+   * Execute uma ação.
+   * @param query Tafera.
+   */
+  public async query(query: string) {
+    const connection = await this.pool.getConnection();
+    try {
+      await connection.execute(query);
+    } catch (error) {
+      throw error;
+    } finally {
+      connection.release();
+    }
+  }
+
+  /**
    * Insere um novo registro em uma tabela.
    * @param table Nome da tabela
    * @param data Dados a serem inseridos (ex: { id: 1, name: 'John' })

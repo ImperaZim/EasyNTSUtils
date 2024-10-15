@@ -172,7 +172,10 @@ export const row_1: Row = {
     }
   }
 };
-export const modal_1: Modal = {
+
+
+registerRow("row_1", row_1);
+registerModal("modal_1", {
   title: "text",
   components: {
     inputs: {
@@ -195,16 +198,8 @@ export const modal_1: Modal = {
         style: TextInputStyle.Paragraph
       }
     }
-  },
-  onSubmit: {
-    elementType: "row",
-    elementIdentifier: "row_1",
   }
-}
-
-
-registerRow("row_1", row_1);
-registerModal("modal_1", modal_1);
+});
 
 
 console.log(getRow("row_1", {}));

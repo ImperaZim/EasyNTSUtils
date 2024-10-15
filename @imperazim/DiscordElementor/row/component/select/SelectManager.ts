@@ -78,6 +78,7 @@ export function buildSelect(selectData: SelectTypes, tags: Tags, row: string, na
               if (optionData.label) option.setLabel(getProcessedTags(optionData.label, tags));
               if (optionData.description) option.setDescription(getProcessedTags(optionData.description, tags));
               if (optionData.value) option.setValue(getProcessedTags(optionData.value, tags));
+              if (optionData.emoji) option.setEmoji(getProcessedTags(optionData.emoji, tags));
               return option;
             })
           );

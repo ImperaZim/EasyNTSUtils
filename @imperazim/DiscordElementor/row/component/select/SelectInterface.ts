@@ -38,7 +38,7 @@ export interface SelectStringDataOption {
   /** Valor associado à opção */
   value: string;
   /** emoji associado à opção */
-  emoji: string;
+  emoji?: string;
 }
 
 /**

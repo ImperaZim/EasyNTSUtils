@@ -1,32 +1,34 @@
 import {
-  ChatInputCommandInteraction,
-  ModalSubmitInteraction
+  InteractionResponse,
+  ModalSubmitInteraction,
 } from "discord.js";
 
 interface ModalCollectorOptions {
-  response: ChatInputCommandInteraction;
+  response: InteractionResponse | any;
   timeout: number;
+  filter: (interaction: ModalSubmitInteraction | any) => boolean;
   callback: (interaction: ModalSubmitInteraction) => void;
-  filter?: (interaction: ModalSubmitInteraction) => boolean;
 }
 
 export class ModalCollector {
   constructor(options: ModalCollectorOptions) {
-    const { response, timeout, callback, filter } = options;
+    const { response, timeout, filter, callback } = options;
 
-    if (response && response.awaitModalSubmit) {
-      response.awaitModalSubmit({
-        time: timeout,
-        filter: filter
-      })
-      .then(interaction => {
-        if (interaction) {
-          callback(interaction);
-        }
-      })
-      .catch(error => {
-        console.error('Erro ao coletar a interação de modal:', error);
-      });
+    if (response) {
+      response
+        .awaitModalSubmit({
+          time: timeout,
+          filter: filter,
+        })
+        .then((modal: ModalSubmitInteraction) => {
+          if (modal) {
+            callback(modal);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
 }
+

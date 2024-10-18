@@ -13,6 +13,8 @@ import {
 export class GlobalCollector {
   constructor(
     response: InteractionResponse | any,
+    componentType: ComponentType,
+    timeout: number,
     callback: (
       interaction:
         | ButtonInteraction
@@ -24,8 +26,6 @@ export class GlobalCollector {
         | MentionableSelectMenuInteraction
         | any
     ) => void,
-    componentType: ComponentType,
-    timeout: number,
     filter?: (
       interaction:
         | ButtonInteraction

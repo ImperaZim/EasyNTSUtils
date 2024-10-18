@@ -26,6 +26,7 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
   }
 
   const modalData: Modal = builder.modals[modal];
+  const components = getModalComponents(modal, tags);
 
   const modalBuilder = new ModalBuilder();
   modalBuilder.setCustomId(modal);

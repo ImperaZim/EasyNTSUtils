@@ -32,16 +32,10 @@ export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder<
 
   const actionRows: ActionRowBuilder<TextInputBuilder>[] = [];
   
-  getInputs(modal, tags).forEach(element => {
-    
-  });
-  
-  if (builder.modals[modal].inputs) {
-    for (const input of getInputs(modal, tags)) {
+  getInputs(modal, tags).forEach(input => {
       console.log(input);
-      actionRows.push(new ActionRowBuilder<TextInputBuilder>().addComponents(input));
-    }
-  }
+    actionRows.push(new ActionRowBuilder<TextInputBuilder>().addComponents(input));
+  });
 
   return actionRows;
 }

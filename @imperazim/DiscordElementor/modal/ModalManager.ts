@@ -46,7 +46,6 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
  * @throws Erros se um modal com o mesmo nome já existir.
  */
 export function registerModal(name: string, modal: Modal): Modals {
-  // Verifica se a propriedade 'modals' já está inicializada. Se não, inicializa como um objeto vazio.
   if (!BuilderRegistry.builder.modals) {
     BuilderRegistry.builder.modals = {};
   }
@@ -55,9 +54,7 @@ export function registerModal(name: string, modal: Modal): Modals {
     throw new Error(`Já existe um modal com o nome ${name} salvo!`);
   }
 
-  // Atualiza ou adiciona o 'modal' com a chave 'name' ao objeto 'modals'
   BuilderRegistry.builder.modals[name] = modal;
 
-  // Retorna o objeto 'modals' atualizado
   return BuilderRegistry.builder.modals;
 }

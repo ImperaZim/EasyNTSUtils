@@ -18,9 +18,7 @@ export type SelectInteractionTypes = SelectMenuInteraction
 export class SelectCollector {
   constructor(
     response: InteractionResponse | any,
-    callback: (
-      interaction: SelectInteractionTypes
-    ) => void,
+    callback: (interaction: SelectInteractionTypes) => void,
     componentType: ComponentType,
     timeout: number,
     filter?: (

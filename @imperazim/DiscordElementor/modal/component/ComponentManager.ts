@@ -30,7 +30,6 @@ export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder<
     throw new Error('O modal não pode ter mais de 5 inputs.');
   }
 
-
   const actionRows: ActionRowBuilder<TextInputBuilder>[] = [];
 
   if (builder.modals[modal].inputs) {

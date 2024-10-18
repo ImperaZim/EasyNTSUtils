@@ -25,6 +25,7 @@ export class GlobalCollector {
         | any
     ) => void,
     componentType: ComponentType,
+    timeout: number,
     filter?: (
       interaction:
         | ButtonInteraction
@@ -39,7 +40,7 @@ export class GlobalCollector {
   ) {
     if (response) {
       const collector = response.createMessageComponentCollector({
-        time: null,
+        time: timeout,
         componentType: componentType,
         filter: filter,
       });

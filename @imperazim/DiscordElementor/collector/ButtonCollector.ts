@@ -12,13 +12,14 @@ export class ButtonCollector {
   constructor(
     response: InteractionResponse,
     callback: (interaction: ButtonInteraction) => void,
-    timeout: number
+    timeout: number,
+    filter?: (interaction: ButtonInteraction) => boolean
   ) {
     if (response) {
       const collector: InteractionCollector<ButtonInteraction> = response.createMessageComponentCollector({
         time: timeout,
         componentType: ComponentType.Button,
-        filter: (interaction: ButtonInteraction) => interaction.isButton(),
+        filter: filter
       });
 
       if (collector) {

@@ -34,6 +34,7 @@ export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder<
 
   if (builder.modals[modal].inputs) {
     for (const input of getInputs(modal, tags)) {
+      console.log(input);
       actionRows.push(new ActionRowBuilder<TextInputBuilder>().addComponents(input));
     }
   }

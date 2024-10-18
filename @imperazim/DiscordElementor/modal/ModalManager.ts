@@ -31,7 +31,7 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
   const modalBuilder = new ModalBuilder();
   modalBuilder.setCustomId(modal);
   modalData.title && modalBuilder.setTitle(modalData.title);
-  modalData.components && modalBuilder.addComponents(getModalComponents(modal, tags));
+  modalData.components && modalBuilder.addComponents(components);
 
   return modalBuilder;
 }

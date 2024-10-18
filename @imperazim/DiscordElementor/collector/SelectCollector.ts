@@ -8,28 +8,23 @@ import {
   MentionableSelectMenuInteraction,
 } from "discord.js";
 
+export type SelectInteractionTypes = SelectMenuInteraction
+  | RoleSelectMenuInteraction
+  | UserSelectMenuInteraction
+  | ChannelSelectMenuInteraction
+  | MentionableSelectMenuInteraction
+  | any;
+
 export class SelectCollector {
   constructor(
     response: InteractionResponse | any,
     callback: (
-      interaction:
-        | SelectMenuInteraction
-        | RoleSelectMenuInteraction
-        | UserSelectMenuInteraction
-        | ChannelSelectMenuInteraction
-        | MentionableSelectMenuInteraction
-        | any
+      interaction: SelectInteractionTypes
     ) => void,
     componentType: ComponentType,
     timeout: number,
     filter?: (
-      interaction:
-        | SelectMenuInteraction
-        | RoleSelectMenuInteraction
-        | UserSelectMenuInteraction
-        | ChannelSelectMenuInteraction
-        | MentionableSelectMenuInteraction
-        | any
+      interaction: SelectInteractionTypes
     ) => boolean
   ) {
     if (response) {

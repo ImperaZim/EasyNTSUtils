@@ -26,17 +26,10 @@ export function getModalComponents(modal: string, tags: Tags): ActionRowBuilder<
   }
 
   const actionRows: ActionRowBuilder<TextInputBuilder>[] = [];
-  
+
   if (builder.modals[modal].inputs) {
-  actionRows.push(new ActionRowBuilder<TextInputBuilder>().addComponents(getInputs(modal, tags) as TextInputBuilder[]));
+    actionRows.push(new ActionRowBuilder<TextInputBuilder>().addComponents(getInputs(modal, tags) as TextInputBuilder[]));
   }
 
-  // Obter inputs e adicionar a um ActionRowBuilder
-  const inputs = getInputs(modal, tags);
-  if (inputs.length > 0) {
-    const actionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(...inputs);
-    actionRows.push(actionRow);
-  }
-
-  return actionRows; // Retorna todos os ActionRowBuilder configurados com inputs
+  return actionRows;
 }

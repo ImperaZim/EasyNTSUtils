@@ -26,12 +26,11 @@ export function getModal(modal: string, tags: Tags): ModalBuilder {
   }
 
   const modalData: Modal = builder.modals[modal];
-  const components: ActionRowBuilder<TextInputBuilder>[] = getModalComponents(modal, tags) as ActionRowBuilder<TextInputBuilder>[];
 
   const modalBuilder = new ModalBuilder();
   modalBuilder.setCustomId(modal);
   modalData.title && modalBuilder.setTitle(modalData.title);
-  modalData.components && modalBuilder.addComponents(...components);
+  modalData.components && modalBuilder.addComponents(...getModalComponents(modal, tags));
 
   return modalBuilder;
 }

@@ -17,7 +17,7 @@ export class ModalCollector {
     if (response && response.awaitModalSubmit) {
       response.awaitModalSubmit({
         time: timeout,
-        filter: filter || ((interaction: ModalSubmitInteraction) => interaction.isModalSubmit()),
+        filter: filter
       })
       .then(interaction => {
         if (interaction) {

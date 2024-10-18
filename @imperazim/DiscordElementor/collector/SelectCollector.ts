@@ -21,9 +21,7 @@ export class SelectCollector {
     callback: (interaction: SelectInteractionTypes) => void,
     componentType: ComponentType,
     timeout: number,
-    filter?: (
-      interaction: SelectInteractionTypes
-    ) => boolean
+    filter?: (interaction: SelectInteractionTypes) => boolean
   ) {
     if (response) {
       const collector = response.createMessageComponentCollector({

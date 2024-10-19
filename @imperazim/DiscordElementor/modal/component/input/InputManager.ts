@@ -23,7 +23,7 @@ export function buildInput(inputData: Input, modal: string, inputName: string, t
   inputData.minLength && input.setMinLength(inputData.minLength);
   inputData.maxLength && input.setMaxLength(inputData.maxLength);
   inputData.label && input.setLabel(getProcessedTags(inputData.label, tags));
-  inputData.value && input.setLabel(getProcessedTags(inputData.value, tags));
+  inputData.value && input.setValue(getProcessedTags(inputData.value, tags));
   inputData.placeholder && input.setPlaceholder(getProcessedTags(inputData.placeholder, tags));
 
   return input;

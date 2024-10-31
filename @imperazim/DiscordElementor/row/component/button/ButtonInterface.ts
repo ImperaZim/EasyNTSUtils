@@ -84,6 +84,18 @@ export interface ButtonDanger {
   };
 }
 
+export interface ButtonDefault {
+  /** Estilo do botão: Default */
+  type: any;
+  data: {
+    /** Texto exibido no botão */
+    label: string;
+    /** Emoji opcional exibido no botão */
+    emoji?: string;
+    onInterfaction?: onInterfaction;
+  };
+}
+
 /**
  * Tipo que abrange todos os tipos de botões.
  * Isso inclui botões de Link, Primário, Secundário, Sucesso e Perigo.
@@ -93,7 +105,8 @@ export type ButtonTypes =
   | ButtonPrimary
   | ButtonSecondary
   | ButtonSuccess
-  | ButtonDanger;
+  | ButtonDanger
+  | ButtonDefault;
 
 /**
  * Interface para um conjunto dinâmico de botões.
